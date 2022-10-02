@@ -72,3 +72,48 @@ public class Inof01 {
 }
 
 ```
+### 继承的使用
+```java
+class GrandPa {
+  String name = "大头爷爷";
+  String hobby = "旅游";
+}
+
+class Father extends GrandPa {
+  String name = "大头爸爸";
+  int age = 39;
+}
+
+class Son extends  Father{
+  String name = "大头儿子";
+}
+
+public class ExtendsTheory {
+  public static void main(String[] args) {
+    Son son = new Son();
+    System.out.println(son.name);
+  }
+}
+
+```
+### 方法的重写
+```java
+class Animal{
+  public void cry() {
+    System.out.println("动物叫换...");
+  }
+}
+
+class Dog extends Animal{
+  public void cry() {
+    System.out.println("小狗在叫...");
+  }
+}
+
+public class Override01 {
+  public static void main(String[] args) {
+      Dog dog = new Dog();
+      dog.cry();
+  }
+}
+```

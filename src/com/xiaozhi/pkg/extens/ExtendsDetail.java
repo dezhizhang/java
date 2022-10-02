@@ -1,13 +1,13 @@
 
-package com.xiaozhi.pkg.ExtendsDetail;
+package com.xiaozhi.pkg.extens;
 class Base1 {
   public int n1 = 100;
   protected  int n2 = 200;
   int n3 = 300;
   private int n4 = 400;
 
-  public Base1() {
-    System.out.println("base()....");
+  public Base1(String name,int age) {
+    System.out.println("姓名:" + name + "年龄:" + age);
   }
   public void test100() {
     System.out.println("test100");
@@ -22,6 +22,7 @@ class Base1 {
 
 class Person extends Base1{
   public Person() {
+    super("tom",30);
     System.out.println("person()....");
   }
   public void sayOk() {
