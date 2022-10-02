@@ -4,8 +4,21 @@ public class Person {
   public String name;
   private int age;
   private double salary;
+  public Person() {
+
+  }
+
+  public Person(String name,int age,double salary) {
+    this.setName(name);
+    this.setAge(age);
+    this.setSalary(salary);
+  }
 
   public void setName(String name) {
+    if(name.length() <2 || name.length() >=6) {
+      System.out.println("输入不合法");
+      return;
+    }
     this.name = name;
   }
 
