@@ -60,4 +60,15 @@ public class This03 {
 }
 
 ```
-### 特别慢的谦顺 题
+### 包的使用
+```java
+public class Inof01 {
+  public static void main(String[] args) {
+    Dog dog = new Dog();
+    dog.cry();
+    Cat cat = new Cat();
+    cat.eta();
+  }
+}
+
+```
