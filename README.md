@@ -396,3 +396,202 @@ class DD{
 }
 
 ```
+### 静态代码块的调用
+```java
+public class CodeBlock03 {
+  public static void main(String[] args) {
+    A a = new A();
+    //A 的静态代码块
+    //getN1被调用...
+  }
+}
+
+class A {
+  static {
+    System.out.println("A 的静态代码块");
+  }
+
+  private int n2 = getN2();
+
+  private static int n1 = getN1();
+
+  public int getN2() {
+    System.out.println("getN2被调用...");
+    return 200;
+  }
+  public static int getN1() {
+    System.out.println("getN1被调用...");
+    return 100;
+  }
+}
+```
+### 继承的普通代码块
+```java
+public class CodeBlock04 {
+  public static void main(String[] args) {
+      AAA aaa = new AAA();
+      /*
+        1BBB的无参构造器
+        2AAA的普通代码块
+        3AAA的无数构造器
+       */
+  }
+}
+
+class  BBB {
+    BBB() {
+      System.out.println("BBB的无参构造器");
+    }
+}
+
+class AAA extends  BBB {
+  {
+    System.out.println("AAA的普通代码块");
+  }
+  AAA() {
+    super();
+    System.out.println("AAA的无数构造器");
+  }
+}
+
+```
+### 代码块的执行顺序
+```java
+public class CodeBlock05 {
+  public static void main(String[] args) {
+    A a = new A(); //1.B静态代码初始化2.B静态代码块3.A静态属性初始化
+    // 4A普通代码执行5.B普通属性初始化6.A普通属性初始化7B的无参构造器8.A的无参构造器执行
+
+  }
+}
+
+class B {
+  public static int n1 = getN1();
+
+  static {
+    System.out.println("B静态代码块");
+  }
+
+  public int n2 = getN2();
+
+  B() {
+    System.out.println("B的无参构造器");
+  }
+
+  public static int getN1() {
+    System.out.println("B静态代码初始化");
+    return 10;
+  }
+
+  public int getN2() {
+    System.out.println("B普通属性初始化");
+    return 20;
+  }
+}
+
+class A extends B {
+  static {
+    System.out.println("A代码执行");
+  }
+
+  public static int n1 = getN1();
+  public int n2 = getN2();
+
+  public static int getN1() {
+    System.out.println("A静态属性初始化");
+    return 10;
+  }
+
+  public int getN2() {
+    System.out.println("A普通属性初始化");
+    return 20;
+  }
+
+  {
+    System.out.println("A普通代码执行");
+  }
+
+  A() {
+    System.out.println("A的无参构造器执行");
+  }
+
+}
+```
+### final可以在代码块和构造器中赋值
+```java
+public class Final01 {
+  public static void main(String[] args) {
+      AA aa = new AA();
+      aa.show();
+  }
+}
+
+class AA {
+  public final double TAX_RATE;
+  public final double TAX_RATE1;
+  // 可以在代码块和构造器中赋值
+  {
+    TAX_RATE1 = 2;
+  }
+
+  public AA() {
+    TAX_RATE = 1;
+  }
+
+  public void show() {
+    System.out.println(TAX_RATE);
+    System.out.println(TAX_RATE1);
+  }
+}
+```
+### final修改的静态属性
+```java
+public class Final03 {
+  public static void main(String[] args) {
+    BB bb = new BB();
+    bb.show();
+
+  }
+}
+
+class BB{
+  //如果final修饰的属性是静态的，
+  //则初始化的位置是定义时和静态代码块不能在构造器中赋值
+  public static final double TAX_RATE;
+
+  static {
+    TAX_RATE = 0.2;
+  }
+
+  public void  show() {
+    System.out.println(BB.TAX_RATE);
+  }
+}
+
+```
+### final方法
+```java
+public class Final04 {
+  public static void main(String[] args) {
+      D d = new D();
+      d.show();
+      d.cal();
+  }
+}
+
+class C {
+  //如果类不是final类
+  //但含有final方法
+  //则方法不能重写但是可以被继承
+  final public void  cal() {
+      System.out.println("final的方法执行了cal");
+  }
+}
+
+class D extends C{
+  public void show() {
+    System.out.println("class D is show");
+  }
+}
+
+```
