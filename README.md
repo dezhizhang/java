@@ -117,3 +117,70 @@ public class Override01 {
   }
 }
 ```
+### 动态类型帮定
+```java
+package com.xiaozhi.pkg.dynamic;
+
+public class Dynamic {
+  public static void main(String[] args) {
+     A a = new B();
+     System.out.println(a.sum());
+     System.out.println(a.sum1());
+  }
+}
+
+class A {
+  public int i= 10;
+  public int sum() {
+    return getI() + 10;
+  }
+  public int sum1() {
+    return this.i + 10;
+  }
+  public int getI() {
+    return i;
+  }
+}
+
+class B extends A{
+  public int i = 20;
+  public int sum() {
+    return i + 20;
+  }
+  public int getI() {
+    return this.i;
+  }
+
+  public int sum1() {
+    return this.i + 10;
+  }
+}
+
+```
+### 多态数组
+```java
+public class PolyArray {
+  public static void main(String[] args) {
+    Person[] person = new Person[5];
+    person[0] = new Person("小明",22);
+    person[1] = new Student("小强",20,100);
+    person[2] = new Student("小华",18,90);
+    person[3] = new Teacher("张老师",40,20000);
+    person[4] = new Teacher("李老师",66,10000);
+
+    for(int i=0;i < person.length;i++) {
+      //如果是学生类
+      if(person[i] instanceof  Student) {
+        ((Student)person[i]).study();
+      }
+      //如果是老师类
+      if(person[i] instanceof Teacher) {
+        ((Teacher)person[i]).teach();
+      }
+      System.out.println(person[i].say());
+    }
+
+  }
+}
+
+```
