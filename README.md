@@ -212,3 +212,70 @@ public class PolyParameter {
 }
 
 ```
+### 对像的toString方法
+```java
+public class ToString {
+  public static void main(String[] args) {
+      Monster monster = new Monster("小王","搬砖",100);
+      System.out.println(monster.toString());
+  }
+}
+
+class Monster{
+  private  String name;
+  private String work;
+  private Double salary;
+
+  Monster(String name,String work,double salary) {
+    this.name = name;
+    this.work = work;
+    this.salary = salary;
+  }
+
+}
+```
+### 静态属性
+```java
+public class VisitStatic {
+  public static void main(String[] args) {
+    System.out.println(A.name);
+  }
+}
+
+class A{
+  public static String name = "晓智云";
+}
+
+```
+### 静态方法
+```java
+public class StaticMethod {
+  public static void main(String[] args) {
+     Student student = new  Student("小明");
+     Student.payFee(100);
+
+     Student student1 = new Student("小强");
+     Student.payFee(200);
+
+     Student.showFee();
+  }
+}
+
+class  Student{
+  private String name;
+  //静态变量所有成员共享
+  private static  double fee = 0;
+  Student(String name){
+    this.name = name;
+  }
+
+  public static void payFee(double fee) {
+    Student.fee += fee;
+  }
+
+  public static void  showFee() {
+    System.out.println("总学费有：" + Student.fee);
+  }
+
+}
+```
