@@ -13,7 +13,7 @@ public class Person {
     return  this.age;
   }
 
-  public String Say() {
+  public String say() {
     return "姓名：" + this.name + "年龄：" + this.age;
   }
 
@@ -31,6 +31,6 @@ class Student extends Person {
     this.score = score;
   }
   public String say() {
-    return "姓名：" + this.name + "年龄：" + this.getAge() + "分数" + this.score;
+    return super.say() + "分数" + this.score;
   }
 }
