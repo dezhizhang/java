@@ -1060,3 +1060,61 @@ public class Exception01 {
 }
 
 ```
+### 包装类
+```java
+public class Wrapper {
+  public static void main(String[] args) {
+    //手动装箱
+    int n1 = 100;
+    Integer integer = new Integer(n1);
+    Integer integer1 = Integer.valueOf(n1);
+
+    System.out.println(integer);
+    System.out.println(integer1);
+
+    // 手动拆箱
+    int i = integer.intValue();
+    System.out.println(i);
+  }
+}
+
+```
+### 包装类型转string
+```java
+public class Wrapper2 {
+  public static void main(String[] args) {
+    // 包装类型转string
+    Integer i = 100;
+    String str = i + "";
+    System.out.println(str);
+    System.out.println(i.toString());
+    System.out.println(String.valueOf(i));
+  }
+}
+```
+### string转成包装类
+```java
+public class Wrapper2 {
+  public static void main(String[] args) {
+    // 字符串转成包装类
+    String str1 = "123456";
+    System.out.println(Integer.parseInt(str1));
+    System.out.println(new Integer(str1));
+  }
+}
+
+```
+### Integer的使用
+```java
+public class Wrapper4 {
+  public static void main(String[] args) {
+     Integer n = 1;
+     Integer m = 1;
+     System.out.println(m == n); //true
+
+     Integer x = 128;
+     Integer y = 128;
+     System.out.println(x == y); //false
+  }
+}
+```
