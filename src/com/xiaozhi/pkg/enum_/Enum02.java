@@ -2,7 +2,13 @@ package com.xiaozhi.pkg.enum_;
 
 public class Enum02 {
   public static void main(String[] args) {
-        System.out.println(Season2.WINTER);
+    Season2 season2 = Season2.AUTUMN;
+    System.out.println(season2.name());
+    //常量对像的次序
+    System.out.println(season2.ordinal());
+    System.out.println(Season2.values().toString());
+    System.out.println(Season2.valueOf("AUTUMN"));
+    System.out.println(Season2.SPRING.compareTo(Season2.AUTUMN));
   }
 }
 
