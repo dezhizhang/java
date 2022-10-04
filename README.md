@@ -623,3 +623,102 @@ class Circle {
 }
 
 ```
+### 抽像方法
+```java
+
+public class Abstract01 {
+  public static void main(String[] args) {
+    Dog dog = new Dog("小黄狗");
+    dog.eat();
+  }
+}
+
+abstract class Animal {
+  public String name;
+  //抽像类不能被实例化
+  //抽像类可以没有抽像方法
+  //一旦类包含abstract方法,
+  //则这个类必须声明为抽像类abstract
+  //abstract只能修饰类和方法不能修饰属性
+  Animal(String name) {
+    this.name = name;
+  }
+
+  public abstract void eat();
+}
+
+class Dog extends Animal{
+  Dog(String name){
+    super(name);
+  }
+  @Override
+  public void eat() {
+    System.out.println("小狗在吃东西");
+  }
+}
+```
+### 抽像类的实现
+```java
+public class Abstract03 {
+  public static void main(String[] args) {
+     Employee employee = new Employee("小明","012",1200);
+     employee.work();
+
+     Manager manager = new Manager("王经理","024",8000);
+     manager.work();
+  }
+}
+
+
+abstract class  CommonEmployee {
+  private String name;
+  private String id;
+  private double salary;
+  CommonEmployee(String name,String id,double salary) {
+    this.id = id;
+    this.name = name;
+    this.salary = salary;
+  }
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return this.name;
+  }
+
+  public void setSalary(double salary) {
+    this.salary = salary;
+  }
+
+  public double getSalary() {
+    return this.salary;
+  }
+
+  public abstract void  work();
+}
+
+class Employee extends CommonEmployee {
+  Employee(String name,String id,double salary) {
+    super(name,id,salary);
+  }
+
+  @Override
+  public void work() {
+    System.out.println("姓名：" + this.getName() + "正在工作");
+  }
+}
+
+class Manager extends CommonEmployee {
+  private double bonus;
+  Manager(String name,String id,double salary) {
+    super(name,id,salary);
+  }
+
+  @Override
+  public void work() {
+    System.out.println("经理：" + this.getName() + "正在工作");
+  }
+}
+```
