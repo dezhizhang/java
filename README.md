@@ -767,3 +767,94 @@ class Camera implements UsbInterface {
   }
 }
 ```
+### 一个类可以同时实现多个接口
+```java
+public class Interface02 {
+  public static void main(String[] args) {
+    Pig pig = new Pig();
+    pig.hi();
+    pig.say();
+  }
+}
+
+interface IB {
+  void hi();
+}
+
+interface IC {
+  void say();
+}
+
+class Pig implements IB, IC {
+
+  @Override
+  public void hi() {
+    System.out.println("hi");
+  }
+
+  @Override
+  public void say() {
+    System.out.println("say");
+  }
+}
+```
+### 接口的练习
+```java
+public class Interface03 {
+  public static void main(String[] args) {
+    B b = new B();
+    System.out.println(b.a);
+    System.out.println(A.a);
+    System.out.println(B.a);
+  }
+}
+
+interface A {
+  int a = 23;
+
+}
+
+class  B implements A {
+
+}
+
+```
+### 接口多态性
+```java
+public class Interface04 {
+  public static void main(String[] args) {
+      Usb[] usbs = new Usb[2];
+      usbs[0] = new MyPhone();
+      usbs[1] = new MyCamera();
+
+      for(int i=0;i < usbs.length;i++) {
+        usbs[i].work();
+        if(usbs[i] instanceof MyPhone) {
+          ((MyPhone) usbs[i]).call();
+        }
+      }
+  }
+}
+
+interface Usb{
+  void work();
+}
+
+class MyPhone implements Usb {
+  @Override
+  public void work() {
+    System.out.println("手机工作中...");
+  }
+
+  public void call() {
+    System.out.println("手机可以打电话...");
+  }
+}
+
+class MyCamera implements Usb {
+  @Override
+  public void work() {
+    System.out.println("相机工作台...");
+  }
+}
+```
