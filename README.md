@@ -858,3 +858,61 @@ class MyCamera implements Usb {
   }
 }
 ```
+### 内部类
+```java
+public class Inner01 {
+  public static void main(String[] args) {
+    Outer outer = new Outer(12);
+    outer.m1();
+  }
+}
+
+
+class Outer{
+  private int n1;
+  Outer(int n1) {
+    this.n1 = n1;
+  }
+  private void m2() {
+    System.out.println("m2");
+  }
+  public void m1() {
+    class Inner{
+      public void f1() {
+        //可以访问外部类的所有成员，包括私有的
+        //不能添加修饰符，但是可以用final访问
+        System.out.println("n1=" + n1);
+        m2();
+      }
+    }
+    Inner inner = new Inner();
+    inner.f1();
+  }
+}
+```
+### 基于接口的内部类
+```java
+public class Inner02 {
+  public static void main(String[] args) {
+    Outer01 outer01 = new Outer01();
+    outer01.method();
+  }
+}
+
+class Outer01{
+  public void method() {
+    IA tiger = new IA() {
+      @Override
+      public void cay() {
+        System.out.println("老虎在叫....");
+      }
+    };
+    tiger.cay();
+  }
+}
+
+interface IA {
+  void cay();
+}
+
+```

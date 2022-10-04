@@ -6,9 +6,9 @@ public class Interface04 {
       usbs[0] = new MyPhone();
       usbs[1] = new MyCamera();
 
-      for(int i=0;i < usbs.length;i++) {
+      for (int i=0;i < usbs.length;i++) {
         usbs[i].work();
-        if(usbs[i] instanceof MyPhone) {
+        if (usbs[i] instanceof MyPhone) {
           ((MyPhone) usbs[i]).call();
         }
       }
@@ -22,17 +22,17 @@ interface Usb{
 class MyPhone implements Usb {
   @Override
   public void work() {
-    System.out.println("手机工作中...");
+    System.out.println("电话正在工作");
   }
-
   public void call() {
-    System.out.println("手机可以打电话...");
+    System.out.println("手机可以打电话");
   }
 }
 
 class MyCamera implements Usb {
   @Override
   public void work() {
-    System.out.println("相机工作台...");
+    System.out.println("相机正在工作");
   }
+
 }
