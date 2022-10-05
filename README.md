@@ -1319,3 +1319,27 @@ class Book {
 }
 
 ```
+### exit退出程序
+```java
+public class Array06 {
+  public static void main(String[] args) {
+    System.out.println("ok1");
+
+    System.exit(0);
+
+    System.out.println("ok2");
+  }
+}
+```
+### arraycopy数组的拷贝
+```java
+public class Array07 {
+  public static void main(String[] args) {
+    int[] src = {1, 2, 3};
+    int[] dest = new int[3];
+
+    System.arraycopy(src, 0, dest, 0, 3);
+    System.out.println(Arrays.toString(dest));
+  }
+}
+```

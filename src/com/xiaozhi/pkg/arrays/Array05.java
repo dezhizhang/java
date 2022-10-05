@@ -18,9 +18,7 @@ public class Array05 {
       }
     });
 
-    for (int i = 0; i < books.length; i++) {
-      System.out.println(books[i].getName().toString());
-    }
+    System.out.println(Arrays.toString(books));
 
   }
 }
