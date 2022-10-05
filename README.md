@@ -1225,3 +1225,48 @@ public class Math02 {
 }
 
 ```
+### 二分查找法
+```java
+public class Arrays01 {
+  public static void main(String[] args) {
+      Integer[] arr = {1,2,90,123,567};
+      int index = Arrays.binarySearch(arr,2);
+      System.out.println(index);
+  }
+}
+
+```
+### 数组的拷贝
+```java
+public class Array02 {
+  public static void main(String[] args) {
+    Integer[] arr = {1,2,3,4};
+    Integer[] newArr = Arrays.copyOf(arr,arr.length);
+    System.out.println(newArr.toString());
+    System.out.println(arr == newArr);
+  }
+}
+```
+### 数组的填充
+```java
+public class Array03 {
+  public static void main(String[] args) {
+    Integer arr[] = {1,2,3,4};
+    Arrays.fill(arr,5);
+    System.out.println(Arrays.toString(arr));
+  }
+}
+
+```
+### 返回两个数组元数是否相等
+```java
+public class Array04 {
+  public static void main(String[] args) {
+      Integer arr1[] = new Integer[]{1,2,3};
+      Integer arr2[] = new Integer[]{1,2,3};
+
+      boolean equals = Arrays.equals(arr1,arr2);
+      System.out.println(equals);
+  }
+}
+```
