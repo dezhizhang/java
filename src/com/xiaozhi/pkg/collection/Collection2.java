@@ -1,6 +1,7 @@
 package com.xiaozhi.pkg.collection;
 
 
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,7 +15,6 @@ public class Collection2 {
 
     Iterator iterator = col.iterator();
     while (iterator.hasNext()) {
-      //返回下一个元素
       Object next = iterator.next();
       System.out.println(next);
     }
