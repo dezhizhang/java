@@ -12,26 +12,24 @@ public class List3 {
     list.add(new Book("西游记", 90.00, "吴承恩"));
     sort(list);
 
-    for(Object o:list) {
+    for (Object o : list) {
       System.out.println(o);
     }
-
-
   }
 
-  public static void sort(List list) {
-    for (int i = 0; i < list.size() - 1; i++) {
-      for (int j = 0; j < list.size() - i - 1; j++) {
-        Book book = (Book) list.get(j);
-        Book book1 = (Book) list.get(j + 1);
-        if (book.getPrice() > book1.getPrice()) {
-          list.set(j,book1);
-          list.set(j + 1,book);
+  public static void  sort(List list) {
+    for(int i=0;i < list.size() - 1;i ++) {
+      for(int j=0;j < list.size() - i - 1;j++) {
+        Book book1 = (Book)list.get(j);
+        Book book2 = (Book) list.get(j + 1);
+        if(book1.getPrice() > book2.getPrice()) {
+          list.set(j,book2);
+          list.set(j + 1,book1);
         }
       }
     }
-
   }
+
 }
 
 class Book {
@@ -55,7 +53,7 @@ class Book {
 
   @Override
   public String toString() {
-    return "名称：" + this.name +"\t\t"+ "价格：" + this.price + "\t\t"+ "作者：" + this.author;
+    return "名称：" + this.name + "\t\t" + "价格：" + this.price + "\t\t" + "作者：" + this.author;
   }
 }
 
