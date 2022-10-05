@@ -1411,4 +1411,36 @@ public class Date03 {
     System.out.println("秒：" + ldt.getSecond());
   }
 }
+
+
+public class Date04 {
+  public static void main(String[] args) {
+    LocalDateTime ldt = LocalDateTime.now();
+
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY年MM月dd日 HH小时mm分钟ss秒");
+
+    System.out.println(dtf.format(ldt));
+
+
+    Instant now = Instant.now();
+    System.out.println(now);
+
+  }
+}
+
+```
+### 第三代日期的使用plusDays
+```java
+public class Date05 {
+  public static void main(String[] args) {
+    LocalDateTime ldt = LocalDateTime.now();
+
+    LocalDateTime nLdt = ldt.plusDays(360);
+    DateTimeFormatter dtf = DateTimeFormatter.ofPattern("YYYY年MM月dd日 HH小时mm分钟ss秒");
+
+    System.out.println(dtf.format(nLdt));
+
+  }
+}
+
 ```
