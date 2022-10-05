@@ -5,6 +5,8 @@ import java.util.Iterator;
 
 public class Set1 {
   public static void main(String[] args) {
+
+
     HashSet hashSet = new HashSet();
     hashSet.add("tom");
     hashSet.add("key");
