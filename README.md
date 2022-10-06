@@ -2178,3 +2178,95 @@ public class Io05 {
 }
 
 ```
+### 文件的拷贝
+```java
+public class Io06 {
+  public static void main(String[] args) {
+
+  }
+  @Test
+  public void  copyFile() {
+    String srcFilePath = "./avatar.webp";
+    String distFilePath = "./avatar1.png";
+
+    FileInputStream fileInputStream = null;
+    FileOutputStream fileOutputStream = null;
+
+    try{
+      fileInputStream = new FileInputStream(srcFilePath);
+      fileOutputStream = new FileOutputStream(distFilePath);
+
+      byte[] buf = new byte[1024];
+      int readLength = 0;
+      while ((readLength = fileInputStream.read(buf)) != -1) {
+        fileOutputStream.write(buf,0,readLength);
+      }
+      System.out.println("文件");
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }finally {
+      try{
+        fileInputStream.close();
+      }catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+  }
+
+}
+
+```
+### FileReader
+```java
+public class Io07 {
+  public static void main(String[] args) {
+    String filePath = "./hello.txt";
+    FileReader fileReader = null;
+    int data = 0;
+
+    try{
+       fileReader = new FileReader(filePath);
+       while ((data = fileReader.read()) != -1) {
+         System.out.print((char) data);
+       }
+    }catch (IOException e) {
+      e.printStackTrace();
+    }
+
+  }
+
+}
+```
+### FileReader批量读取
+```java
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Io08 {
+  public static void main(String[] args) {
+    String filePath = "./hello.txt";
+    FileReader fileReader = null;
+    int readLength = 0;
+    char[] buf = new char[8];
+
+    try {
+      fileReader = new FileReader(filePath);
+      while ((readLength = fileReader.read(buf)) != -1) {
+        System.out.print(new String(buf, 0, readLength));
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try {
+        fileReader.close();
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+  }
+}
+
+```
