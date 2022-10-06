@@ -8,19 +8,18 @@ public class Io09 {
     String filePath = "./info.txt";
     FileWriter fileWriter = null;
 
-    try {
+    try{
       fileWriter = new FileWriter(filePath);
-      fileWriter.write("北京你好".toCharArray());
+      fileWriter.write("贵州你好".toCharArray());
+
     } catch (IOException e) {
       e.printStackTrace();
-    } finally {
+    }finally {
       try{
         fileWriter.close();
-        fileWriter.flush();
-      }catch (IOException e) {
+      } catch (IOException e) {
         e.printStackTrace();
       }
-
     }
   }
 }
