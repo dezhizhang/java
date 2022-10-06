@@ -2270,3 +2270,27 @@ public class Io08 {
 }
 
 ```
+### 文件写入
+```java
+public class Io09 {
+  public static void main(String[] args) {
+    String filePath = "./info.txt";
+    FileWriter fileWriter = null;
+
+    char[] chars = {'a', 'b', 'c'};
+    try {
+      fileWriter = new FileWriter(filePath);
+      fileWriter.write("韩顺平教育".toCharArray());
+    } catch (IOException e) {
+      e.printStackTrace();
+    } finally {
+      try{
+        fileWriter.close();
+      }catch (IOException e) {
+        e.printStackTrace();
+      }
+
+    }
+  }
+}
+```
