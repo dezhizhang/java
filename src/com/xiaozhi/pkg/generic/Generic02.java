@@ -1,9 +1,6 @@
 package com.xiaozhi.pkg.generic;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Generic02 {
   public static void main(String[] args) {
@@ -27,7 +24,14 @@ public class Generic02 {
     hashMap.put("小黄",new Student("小黄",33));
     hashMap.put("大黄",new Student("大黄",44));
 
-   System.out.println(hashMap);
+    Set<Map.Entry<String, Student>> entries = hashMap.entrySet();
+
+    Iterator<Map.Entry<String, Student>> iterator = entries.iterator();
+    while (integer.hasNext()) {
+      Map.Entry<String, Student> next = iterator.next();
+      System.out.println(next);
+    }
+    System.out.println(hashMap);
   }
 }
 
