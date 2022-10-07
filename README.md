@@ -2294,3 +2294,38 @@ public class Io09 {
   }
 }
 ```
+### BufferedReader 文件的读取
+```java
+public class Io10 {
+  public static void main(String[] args) {
+    String filePath = "./info.txt";
+    try {
+      BufferedReader bufferedReader = new BufferedReader(new FileReader(filePath));
+      String line;
+      while ((line = bufferedReader.readLine())!= null) {
+        System.out.println(line);
+      }
+      bufferedReader.close();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+```
+### bufferedWriter文件的写入
+```java
+public class Io11 {
+  public static void main(String[] args) {
+    String filePath = "./hello.txt";
+    try {
+      BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(filePath));
+      bufferedWriter.write("hello 你好贵州贵阳");
+      bufferedWriter.close();
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+  }
+}
+
+```
