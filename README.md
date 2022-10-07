@@ -2478,3 +2478,20 @@ public class RegExp07 {
 }
 
 ```
+### 限定符
+```java
+public class RegExp {
+  public static void main(String[] args) {
+    String content = "a1aaa12";
+
+    String regExp = "a1?";
+
+    Pattern pattern = Pattern.compile(regExp);
+    Matcher matcher = pattern.matcher(content);
+    while (matcher.find()) {
+      System.out.println(matcher.group(0));
+    }
+  }
+}
+
+```
