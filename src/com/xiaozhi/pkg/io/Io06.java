@@ -14,7 +14,7 @@ public class Io06 {
   public void  copyFile() {
 
     String srcFilePath = "./avatar.webp";
-    String distFilePath = "./avatar1.png";
+    String distFilePath = "./avatar.png";
 
     FileInputStream fileInputStream = null;
     FileOutputStream fileOutputStream = null;
