@@ -2370,3 +2370,17 @@ public class Io12 {
   }
 }
 ```
+### 解决中文乱码问题
+```java
+public class Standard {
+  public static void main(String[] args) throws IOException {
+    String filePath = "./hello.txt";
+    InputStreamReader isr = new InputStreamReader(new FileInputStream(filePath), "utf-8");
+    BufferedReader br = new BufferedReader(isr);
+
+    String s = br.readLine();
+    System.out.println(s);
+    br.close();
+  }
+}
+```
