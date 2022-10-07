@@ -2498,9 +2498,42 @@ public class RegExp {
 ### 定位匹配符
 ```java
 public class RegExp11 {
+    public static void main(String[] args) {
+        String content = "123abc";
+        String regExp = "^[0-9]+[a-z]*";
+
+        Pattern pattern = Pattern.compile(regExp);
+        Matcher matcher = pattern.matcher(content);
+
+        while (matcher.find()) {
+            System.out.println(matcher.group(0));
+        }
+    }
+}
+
+```
+### 非捕获分组
+```java
+public class RegExp15 {
   public static void main(String[] args) {
-    String content = "123abc";
-    String regExp = "^[0-9]+[a-z]*";
+    String content = "hello韩顺平教育 jack韩顺平老师 韩顺平同学hello";
+
+    String regExp = "韩顺平(?:教育|老师|同学)";
+
+    Pattern pattern = Pattern.compile(regExp);
+    Matcher matcher = pattern.matcher(content);
+    while (matcher.find()) {
+      System.out.println(matcher.group(0));
+    }
+  }
+}
+```
+### 非捕获分组
+```java
+public class RegExp16 {
+  public static void main(String[] args) {
+    String content = "hello韩顺平教育 jack韩顺平老师 韩顺平同学hello";
+    String regExp = "韩顺平(?=教育|老师)";
 
     Pattern pattern = Pattern.compile(regExp);
     Matcher matcher = pattern.matcher(content);
@@ -2509,5 +2542,6 @@ public class RegExp11 {
       System.out.println(matcher.group(0));
     }
   }
+}
 
 ```
