@@ -2495,3 +2495,19 @@ public class RegExp {
 }
 
 ```
+### 定位匹配符
+```java
+public class RegExp11 {
+  public static void main(String[] args) {
+    String content = "123abc";
+    String regExp = "^[0-9]+[a-z]*";
+
+    Pattern pattern = Pattern.compile(regExp);
+    Matcher matcher = pattern.matcher(content);
+
+    while (matcher.find()) {
+      System.out.println(matcher.group(0));
+    }
+  }
+
+```
