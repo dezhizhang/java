@@ -2642,3 +2642,21 @@ public class Mysql06 {
 }
 
 ```
+### 第五种方式连接数据库
+```java
+public class Mysql08 {
+  public static void main(String[] args) throws IOException, SQLException, ClassNotFoundException {
+    
+    Properties properties = new Properties();
+    properties.load(new FileInputStream("./mysql.properties"));
+
+    String user = properties.getProperty("user");
+    String url = properties.getProperty("url");
+    String password = properties.getProperty("password");
+    Class.forName(properties.getProperty("driver"));
+
+    Connection connection = DriverManager.getConnection(url, user, password);
+    System.out.println("第5种方式连接" + connection);
+  }
+}
+```
