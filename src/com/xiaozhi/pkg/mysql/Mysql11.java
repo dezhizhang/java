@@ -1,14 +1,12 @@
 package com.xiaozhi.pkg.mysql;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
 
-public class Mysql10 {
+public class Mysql11 {
   public static void main(String[] args) throws IOException, ClassNotFoundException, SQLException {
-
     Properties properties = new Properties();
     properties.load(new FileInputStream("./mysql.properties"));
     String url = properties.getProperty("url");
@@ -35,7 +33,5 @@ public class Mysql10 {
     resultSet.close();
     connection.close();
     preparedStatement.close();
-
-
   }
 }
