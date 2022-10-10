@@ -29,5 +29,6 @@
     <orderEntry type="library" name="c3p0-0.9.5.5-sources (2)" level="project" />
     <orderEntry type="library" name="c3p0-0.9.2.1-sources" level="project" />
     <orderEntry type="library" name="druid-1.1.12" level="project" />
+    <orderEntry type="library" name="commons-dbutils-1.7" level="project" />
   </component>
 </module>
