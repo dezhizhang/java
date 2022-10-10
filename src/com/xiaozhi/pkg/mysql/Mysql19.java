@@ -3,7 +3,9 @@ package com.xiaozhi.pkg.mysql;
 import com.xiaozhi.pkg.use.Use;
 import com.xiaozhi.pkg.utils.JDBCUtilsByDruid;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
+import org.apache.commons.dbutils.handlers.ScalarHandler;
 import org.junit.jupiter.api.Test;
 
 import java.sql.Connection;
@@ -52,6 +54,35 @@ public class Mysql19 {
     } catch (SQLException e) {
       throw new RuntimeException(e);
     }
-
+  }
+  @Test
+  public void testQuerySingle() {
+    // 得到连接
+    Connection connection = JDBCUtilsByDruid.getConnection();
+    //使用DBUtils
+    QueryRunner queryRunner = new QueryRunner();
+    //执行查询
+    String sql = "select * from users where id =?";
+    try {
+      Users users = queryRunner.query(connection, sql, new BeanHandler<>(Users.class),1);
+      System.out.println(users);
+      JDBCUtilsByDruid.close(null,null,connection);
+    } catch (SQLException e) {
+      throw new RuntimeException(e);
+    }
+  }
+  // 返回单行单列
+  @Test
+  public void testScalar() {
+    Connection connection = JDBCUtilsByDruid.getConnection();
+    QueryRunner queryRunner = new QueryRunner();
+    String sql = "select name from users where id =?";
+    try{
+      Object obj = queryRunner.query(connection,sql,new ScalarHandler<>(),1);
+      System.out.println(obj);
+      JDBCUtilsByDruid.close(null,null,connection);
+    } catch (Exception e) {
+      throw  new RuntimeException(e);
+    }
   }
 }
