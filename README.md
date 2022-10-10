@@ -3053,6 +3053,21 @@ public class Mysql19 {
       throw  new RuntimeException(e);
     }
   }
+
+  @Test
+  public void testDML() throws SQLException {
+    Connection connection = JDBCUtilsByDruid.getConnection();
+    QueryRunner queryRunner = new QueryRunner();
+
+//    String sql = "update users set name = ? where id=?";
+
+    String sql ="insert into users values(null,?,?)";
+
+    int affectedRow = queryRunner.update(connection,sql,"张三峰",22);
+    System.out.println(affectedRow);
+    JDBCUtilsByDruid.close(null,null,connection);
+  }
 }
+
 
 ```
