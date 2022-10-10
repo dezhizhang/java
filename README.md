@@ -3071,3 +3071,55 @@ public class Mysql19 {
 
 
 ```
+## 异常模块
+### 空指钟异常
+```java
+public class Error {
+  public static void main(String[] args) {
+    String name = null;
+    System.out.println(name.length());
+  }
+}
+```
+### 数组下标越界
+```java
+public class Error01 {
+  public static void main(String[] args) {
+    int[] arr  = {1,2,3};
+    for(int i=0;i <= arr.length;i++) {
+      System.out.println(arr[i]);
+    }
+  }
+}
+```
+### 类型转换异常
+```java
+public class Error02 {
+  public static void main(String[] args) {
+    A b = new B();
+    B b2 = (B) b;
+    C c1 = (C) b;
+    System.out.println(c1);
+  }
+}
+
+class A {
+}
+
+class B extends A {
+}
+
+class C extends A {
+}
+```
+###  数字转换异常
+```java
+public class Error03 {
+  public static void main(String[] args) {
+    String name = "hello";
+    int num = Integer.parseInt(name);
+    System.out.println(name);
+  }
+}
+
+```
