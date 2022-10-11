@@ -8,7 +8,11 @@ import java.util.Properties;
 public class Reflection01 {
   public static void main(String[] args) throws IOException {
     Properties properties = new Properties();
-    properties.load(new FileInputStream("src/com.xiaozhi.pkg.reflection"));
-//    String class
+    properties.load(new FileInputStream("./refect.properties"));
+    String classFullPath = properties.getProperty("classfullpath").toString();
+    String method = properties.getProperty("method").toString();
+
+    System.out.println(classFullPath);
+    System.out.println(method);
   }
 }

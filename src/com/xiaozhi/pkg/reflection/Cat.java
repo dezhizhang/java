@@ -9,6 +9,10 @@ public class Cat {
     this.age = age;
   }
 
+  public void hi() {
+    System.out.println("hi");
+  }
+
   public void eat() {
     System.out.println("猫在吃...");
   }
