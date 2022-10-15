@@ -8,9 +8,10 @@ public class LinkList {
 
     // 加入
     SingleLinkList singleLinkList = new SingleLinkList();
-    singleLinkList.add(hero1);
-    singleLinkList.add(hero2);
-    singleLinkList.add(hero3);
+    singleLinkList.addByOrder(hero2);
+    singleLinkList.addByOrder(hero3);
+    singleLinkList.addByOrder(hero1);
+    singleLinkList.addByOrder(hero1);
 
     singleLinkList.list();
 
@@ -33,6 +34,32 @@ class SingleLinkList {
     temp.next = heroNode;
   }
 
+  // 有序添加节点到链表中
+  public void addByOrder(HeroNode heroNode) {
+    HeroNode temp = head;
+    boolean flag = false;
+    while (true) {
+      if (temp.next == null) {
+        break;
+      }
+      if (temp.next.no == heroNode.no) {
+        flag = true;
+        break;
+      }
+      if (temp.next.no > heroNode.no && heroNode.no > temp.no) {
+        break;
+      }
+      temp = temp.next;
+    }
+    if (!flag) {
+      heroNode.next = temp.next;
+      temp.next = heroNode;
+    }
+    if (flag) {
+      System.out.printf("添加的数据已经存在%d", temp.no);
+    }
+  }
+
   // 显示链表
   public void list() {
     if (head.next == null) {
@@ -48,6 +75,7 @@ class SingleLinkList {
       temp = temp.next;
     }
   }
+
 
 }
 
