@@ -6,10 +6,13 @@ import java.util.Stack;
 
 public class Stack01 {
   public static void main(String[] args) {
-    String suffixExpression = "3 4 + 5 * 6 - ";
-    List<String> list = getListString(suffixExpression);
-    int result = calculate(list);
-    System.out.println(result);
+    String expression = "1+((2+3)*4)-5";
+    List<String> list = toInfixExpressionList(expression);
+    System.out.println(list);
+//    String suffixExpression = "3 4 + 5 * 6 - ";
+//    List<String> list = getListString(suffixExpression);
+//    int result = calculate(list);
+//    System.out.println(result);
   }
 
   public static List<String> getListString(String suffixExpression) {
@@ -22,16 +25,39 @@ public class Stack01 {
     return list;
   }
 
+  // 将中缀表过式转成对应的List
+  public static List<String> toInfixExpressionList(String s) {
+    List<String> list = new ArrayList<>();
+    int index = 0;
+    String strings; // 多位数拼接
+    char c;
+    do {
+      if ((c = s.charAt(index)) < 48 || (c = s.charAt(index)) > 57) {
+        list.add("" + c);
+        index++;
+      } else {
+        strings = "";
+        while (index < s.length() && (c = s.charAt(index)) >= 48 && (c = s.charAt(index)) <= 57) {
+          strings += c;
+          index++;
+        }
+        list.add(strings);
+      }
+    } while (index < s.length());
+    return list;
+  }
+
   public static int calculate(List<String> list) {
     Stack<String> stack = new Stack<>();
     for (String item : list) {
       if (item.matches("\\d+")) {
-        // 匹配多位数
+        //匹配多位数
         stack.push(item);
       } else {
-        //pop出两个数并运算
+        //pop取出两位数运算
         int num2 = Integer.parseInt(stack.pop());
         int num1 = Integer.parseInt(stack.pop());
+
         int result = 0;
         if (item.equals("+")) {
           result = num1 + num2;
@@ -49,6 +75,7 @@ public class Stack01 {
     }
     return Integer.parseInt(stack.pop());
   }
+
 }
 
 
