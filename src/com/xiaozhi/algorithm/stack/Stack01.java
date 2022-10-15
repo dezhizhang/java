@@ -8,11 +8,10 @@ public class Stack01 {
   public static void main(String[] args) {
     String expression = "1+((2+3)*4)-5";
     List<String> list = toInfixExpressionList(expression);
-    System.out.println(list);
-//    String suffixExpression = "3 4 + 5 * 6 - ";
-//    List<String> list = getListString(suffixExpression);
-//    int result = calculate(list);
-//    System.out.println(result);
+    List<String> list1 = parseSuffixExpressionList(list);
+    System.out.println(list1);
+    int result = calculate(list1);
+    System.out.println(result);
   }
 
   public static List<String> getListString(String suffixExpression) {
@@ -47,6 +46,37 @@ public class Stack01 {
     return list;
   }
 
+  // 中缀表达式转成后缀表过
+  public static List<String> parseSuffixExpressionList(List<String> list) {
+    Stack<String> stack = new Stack<>();
+    List<String> list1 = new ArrayList<>();
+
+    for (String item : list) {
+      if (item.matches("\\d+")) {
+        list1.add(item);
+      } else if (item.equals("(")) {
+        stack.push(item);
+      } else if (item.equals(")")) {
+        while (!stack.peek().equals("(")) {
+          list1.add(stack.pop());
+        }
+        // 将"("弹出栈
+        stack.pop();
+      } else {
+        //s1栈顶的运算符
+        while (stack.size() != 0 && Priority.getValue(stack.peek()) >= Priority.getValue(item)) {
+          list1.add(stack.pop());
+        }
+        // 还需要将item压力栈中
+        stack.push(item);
+      }
+    }
+    while (stack.size() != 0) {
+      list1.add(stack.pop());
+    }
+    return list1;
+  }
+
   public static int calculate(List<String> list) {
     Stack<String> stack = new Stack<>();
     for (String item : list) {
@@ -76,6 +106,34 @@ public class Stack01 {
     return Integer.parseInt(stack.pop());
   }
 
+}
+
+class Priority {
+  private static int ADD = 1;
+  private static int SUB = 1;
+  private static int MUL = 2;
+  private static int DIV = 2;
+
+  public static int getValue(String priority) {
+    int result = 0;
+    switch (priority) {
+      case "+":
+        result = ADD;
+        break;
+      case "-":
+        result = SUB;
+        break;
+      case "*":
+        result = MUL;
+        break;
+      case "/":
+        result = DIV;
+        break;
+      default:
+        break;
+    }
+    return result;
+  }
 }
 
 
