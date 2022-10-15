@@ -11,7 +11,7 @@ public class LinkList {
     singleLinkList.addByOrder(hero2);
     singleLinkList.addByOrder(hero3);
     singleLinkList.addByOrder(hero1);
-    singleLinkList.addByOrder(hero1);
+//    singleLinkList.delete(3);
 
     singleLinkList.list();
 
@@ -46,18 +46,45 @@ class SingleLinkList {
         flag = true;
         break;
       }
-      if (temp.next.no > heroNode.no && heroNode.no > temp.no) {
+      if (temp.next.no > heroNode.no) {
         break;
       }
       temp = temp.next;
     }
     if (!flag) {
-      heroNode.next = temp.next;
+      heroNode.next = temp;
       temp.next = heroNode;
     }
     if (flag) {
       System.out.printf("添加的数据已经存在%d", temp.no);
     }
+  }
+
+  public void update(HeroNode heroNode) {
+    if (head.next == null) {
+      System.out.println("链表为空");
+      return;
+    }
+
+    // 临时节点
+    HeroNode temp = head;
+    boolean flag = false;
+    while (true) {
+      if (temp.next == null) {
+        break;
+      }
+      if (temp.no == heroNode.no) {
+        flag = true;
+        break;
+      }
+      temp = temp.next;
+    }
+
+    if (flag) {
+      temp.next.name = heroNode.name;
+      temp.next.nickName = head.nickName;
+    }
+
   }
 
   // 显示链表
@@ -73,6 +100,30 @@ class SingleLinkList {
       }
       System.out.println(temp);
       temp = temp.next;
+    }
+  }
+
+  // 删除节点
+  public void delete(int no) {
+    if (head.next == null) {
+      System.out.println("链表为空");
+      return;
+    }
+    HeroNode temp = head;
+    boolean flag = false;
+    while (true) {
+      if (temp.next == null) {
+        System.out.println("没有找到要删除的节点");
+        break;
+      }
+      if (temp.next.no == no) {
+        flag = true;
+        break;
+      }
+      temp = temp.next;
+    }
+    if (flag) {
+      temp.next = temp.next.next;
     }
   }
 
@@ -94,7 +145,7 @@ class HeroNode {
 
   @Override
   public String toString() {
-    return "HeroNode{" + "no=" + no + ", name='" + name + '\'' + ", nickName='" + nickName + '\'' + ", next=" + next + '}';
+    return "HeroNode{" + "no=" + no + "name=" + name + "}";
   }
 }
 
