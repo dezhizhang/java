@@ -11,9 +11,10 @@ public class LinkList {
     singleLinkList.addByOrder(hero2);
     singleLinkList.addByOrder(hero3);
     singleLinkList.addByOrder(hero1);
-//    singleLinkList.delete(3);
+
 
     singleLinkList.list();
+//    SingleLinkList.getLength(h)
 
   }
 }
@@ -127,7 +128,19 @@ class SingleLinkList {
     }
   }
 
-
+  // 获取节点的长度
+  public static int getLength(HeroNode head) {
+    if (head.next == null) {
+      return 0;
+    }
+    int length = 0;
+    HeroNode temp = head.next;
+    while (temp.next != null) {
+      length++;
+      temp = temp.next;
+    }
+    return length;
+  }
 }
 
 class HeroNode {
