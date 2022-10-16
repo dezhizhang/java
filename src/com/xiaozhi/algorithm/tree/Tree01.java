@@ -16,32 +16,34 @@ public class Tree01 {
     node3.setRight(node4);
     node3.setLeft(node5);
 
-    HeroNode result = null;
-
-    System.out.println("=======前序遍历=====");
+    binaryTree.deleteNode(5);
     binaryTree.preOrder();
-    System.out.println("=======中序遍历====");
-    binaryTree.infixOrder();
-    System.out.println("=======后序遍历====");
-    binaryTree.postOrder();
+//    HeroNode result = null;
 
+//    System.out.println("=======前序遍历=====");
 
-    System.out.println("===================");
-    System.out.println("=======前序查找=====");
-    result = binaryTree.preOrderSearch(5);
-    if (result != null) {
-      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
-    }
-    System.out.println("=======中序查找====");
-    result = binaryTree.infixOrderSearch(5);
-    if (result != null) {
-      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
-    }
-    System.out.println("=======后序查找====");
-    result = binaryTree.preOrderSearch(5);
-    if (result != null) {
-      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
-    }
+//    System.out.println("=======中序遍历====");
+//    binaryTree.infixOrder();
+//    System.out.println("=======后序遍历====");
+//    binaryTree.postOrder();
+//
+//
+//    System.out.println("===================");
+//    System.out.println("=======前序查找=====");
+//    result = binaryTree.preOrderSearch(5);
+//    if (result != null) {
+//      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+//    }
+//    System.out.println("=======中序查找====");
+//    result = binaryTree.infixOrderSearch(5);
+//    if (result != null) {
+//      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+//    }
+//    System.out.println("=======后序查找====");
+//    result = binaryTree.preOrderSearch(5);
+//    if (result != null) {
+//      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+//    }
   }
 }
 
@@ -66,6 +68,7 @@ class BinaryTree {
       System.out.println("二叉树为空不能遍历");
       return;
     }
+
     this.root.infixOrder();
   }
 
@@ -104,6 +107,17 @@ class BinaryTree {
       return null;
     }
     return this.root.postOrderSearch(no);
+  }
+
+  public void deleteNode(int no) {
+    if (this.root == null) {
+      System.out.println("二叉树为空不能遍历");
+    }
+    if (root.getNo() == no) {
+      root = null;
+      return;
+    }
+    this.root.deleteNode(no);
   }
 
 
@@ -247,6 +261,27 @@ class HeroNode {
       return this;
     }
     return resultNode;
+  }
+
+  // 删除节点
+  public void deleteNode(int no) {
+    if (this.left != null && this.left.no == no) {
+      this.left = null;
+      return;
+    }
+
+    if (this.right != null && this.right.no == no) {
+      this.right = null;
+      return;
+    }
+
+    if (this.left != null) {
+      this.left.deleteNode(no);
+    }
+    if (this.right != null) {
+      this.right.deleteNode(no);
+    }
+
   }
 
 }
