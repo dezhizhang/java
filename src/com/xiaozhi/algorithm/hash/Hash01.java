@@ -1,7 +1,40 @@
 package com.xiaozhi.algorithm.hash;
 
+import java.util.Scanner;
+
 public class Hash01 {
   public static void main(String[] args) {
+    HashTable hashTable = new HashTable(7);
+
+    // 一个简单的菜单
+    String key = "";
+    Scanner scanner = new Scanner(System.in);
+    while (true) {
+      System.out.println("add:添加员工");
+      System.out.println("list:显示员工");
+      System.out.println("exit:退出系统");
+      key = scanner.next();
+
+      switch (key) {
+        case "add":
+          System.out.println("输入id");
+          int id = scanner.nextInt();
+          System.out.println("输入名字");
+          String name = scanner.next();
+          // 创建员工
+          Employee employee = new Employee(id, name);
+          hashTable.add(employee);
+          break;
+        case "list":
+          hashTable.list();
+          break;
+        case "exit":
+          scanner.close();
+//          System.exit();
+        default:
+          break;
+      }
+    }
 
   }
 }
@@ -13,6 +46,9 @@ class HashTable {
   public HashTable(int size) {
     this.size = size;
     employeeLinkList = new EmployeeLinkList[size];
+    for (int i = 0; i < size; i++) {
+      employeeLinkList[i] = new EmployeeLinkList();
+    }
   }
 
   // 添加员工
@@ -47,7 +83,7 @@ class Employee {
     this.name = name;
 
   }
-  
+
 }
 
 class EmployeeLinkList {
@@ -87,5 +123,24 @@ class EmployeeLinkList {
       temp = temp.next;
     }
     System.out.println();
+  }
+
+  public Employee findEmployee(int id) {
+    if (head == null) {
+      System.out.println("链表为空");
+      return null;
+    }
+    Employee temp = head;
+    while (true) {
+      if (temp.id == id) {
+        break;
+      }
+      if (temp.next == null) {
+        temp = null;
+        break;
+      }
+      temp = temp.next;
+    }
+    return temp;
   }
 }
