@@ -10,32 +10,32 @@ public class BinarySearch01 {
     System.out.println(list);
   }
 
-  public static ArrayList<Integer> binarySearch(int[] arr, int left, int right, int value) {
-
+  public static ArrayList<Integer> binarySearch(int[] arr, int left, int right, int findValue) {
     if (left > right) {
-      return new ArrayList<Integer>();
+      return new ArrayList<>();
     }
     int mid = (left + right) / 2;
-    int midVal = arr[mid];
-
-    if (value > midVal) {
-      return binarySearch(arr, mid + 1, right, value);
-    } else if (value > midVal) {
-      return binarySearch(arr, left, mid - 1, value);
+    int midValue = arr[mid];
+    if (findValue > midValue) {
+      return binarySearch(arr, mid + 1, right, findValue);
+    } else if (findValue < midValue) {
+      return binarySearch(arr, left, mid - 1, findValue);
     } else {
       List<Integer> list = new ArrayList<>();
       int temp = mid - 1;
       while (true) {
-        if (temp < 0 || arr[temp] != value) {
+        if (temp < 0 || arr[temp] != findValue) {
           break;
         }
         list.add(temp);
         temp -= 1;
       }
+
       list.add(mid);
+
       temp = mid + 1;
       while (true) {
-        if (temp > arr.length - 1 || arr[temp] != value) {
+        if (temp > arr.length - 1 || arr[temp] != findValue) {
           break;
         }
         list.add(temp);
@@ -45,6 +45,7 @@ public class BinarySearch01 {
     }
 
   }
+
 }
 
 
