@@ -16,7 +16,7 @@ public class Tree01 {
     node3.setRight(node4);
     node3.setLeft(node5);
 
-    binaryTree.deleteNode(5);
+    binaryTree.deleteNode(3);
     binaryTree.preOrder();
 //    HeroNode result = null;
 
