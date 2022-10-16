@@ -3321,3 +3321,46 @@ public class BubbleSortOptimize {
   }
 }
 ```
+### 线性查找
+```java
+public class Search {
+  public static void main(String[] args) {
+    int arr[] = {1, 9, 11, -1, 34, 89};
+    int value = seqSearch(arr, 34);
+    System.out.println(value);
+  }
+
+  public static int seqSearch(int[] arr, int value) {
+    for (int i = 0; i < arr.length; i++) {
+      if (arr[i] == value) {
+        return i;
+      }
+    }
+    return -1;
+  }
+}
+
+```
+### 二分查找
+```java
+public class BinarySearch {
+  public static void main(String[] args) {
+    int arr[] = {1,8,10,89,1000,1234};
+    int value = binarySearch(arr,0,arr.length-1,10);
+    System.out.println(value);
+  }
+
+  public static int binarySearch(int[] arr, int left, int right, int value) {
+    int mid = (left + right) / 2;
+    int midValue = arr[mid];
+    if (value > midValue) {
+      return binarySearch(arr, mid + 1, right, value);
+    } else if (value < midValue) {
+      return binarySearch(arr, left, mid - 1, value);
+    } else {
+      return mid;
+    }
+  }
+}
+
+```
