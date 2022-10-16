@@ -3603,10 +3603,6 @@ class EmployeeLinkList {
 ```
 ### 二叉树遍历
 ```java
-package com.xiaozhi.algorithm.tree;
-
-import java.util.ArrayList;
-
 public class Tree01 {
   public static void main(String[] args) {
 
@@ -3615,10 +3611,14 @@ public class Tree01 {
     HeroNode node2 = new HeroNode(2, "吴用");
     HeroNode node3 = new HeroNode(3, "卢俊义");
     HeroNode node4 = new HeroNode(4, "林冲");
+    HeroNode node5 = new HeroNode(5, "关胜");
     binaryTree.setRoot(root);
     root.setLeft(node2);
     root.setRight(node3);
     node3.setRight(node4);
+    node3.setLeft(node5);
+
+    HeroNode result = null;
 
     System.out.println("=======前序遍历=====");
     binaryTree.preOrder();
@@ -3628,6 +3628,22 @@ public class Tree01 {
     binaryTree.postOrder();
 
 
+    System.out.println("===================");
+    System.out.println("=======前序查找=====");
+    result = binaryTree.preOrderSearch(5);
+    if (result != null) {
+      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+    }
+    System.out.println("=======中序查找====");
+    result = binaryTree.infixOrderSearch(5);
+    if (result != null) {
+      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+    }
+    System.out.println("=======后序查找====");
+    result = binaryTree.preOrderSearch(5);
+    if (result != null) {
+      System.out.printf("找到信息id=%d,name=%s\n", result.getNo(), result.getName());
+    }
   }
 }
 
@@ -3662,6 +3678,34 @@ class BinaryTree {
       return;
     }
     this.root.postOrder();
+  }
+
+  // 前序遍历
+  public HeroNode preOrderSearch(int no) {
+    if (this.root == null) {
+      System.out.println("二叉树为空不能遍历");
+      return null;
+    }
+    return this.root.preOrderSearch(no);
+  }
+
+  // 中序遍历
+  public HeroNode infixOrderSearch(int no) {
+    if (this.root == null) {
+      System.out.println("二叉树为空不能遍历");
+      return null;
+    }
+
+    return this.root.infixOrderSearch(no);
+  }
+
+  // 后序遍历
+  public HeroNode postOrderSearch(int no) {
+    if (this.root == null) {
+      System.out.println("二叉树为空不能遍历");
+      return null;
+    }
+    return this.root.postOrderSearch(no);
   }
 
 
@@ -3749,6 +3793,62 @@ class HeroNode {
       this.right.postOrder();
     }
     System.out.println(this);
+  }
+
+  // 前序查找
+  public HeroNode preOrderSearch(int no) {
+    if (this.no == no) {
+      return this;
+    }
+    HeroNode resultNode = null;
+    if (this.left != null) {
+      resultNode = this.left.preOrderSearch(no);
+    }
+    if (resultNode != null) {
+      return resultNode;
+    }
+    if (this.right != null) {
+      resultNode = this.right.preOrderSearch(no);
+    }
+    return resultNode;
+  }
+
+  // 中序遍历查找
+  public HeroNode infixOrderSearch(int no) {
+    HeroNode resultNode = null;
+    if (this.left != null) {
+      resultNode = this.left.infixOrderSearch(no);
+    }
+    if (resultNode != null) {
+      return resultNode;
+    }
+    if (this.no == no) {
+      return this;
+    }
+    // 否则向左进行中间查找
+    if (this.right != null) {
+      resultNode = this.right.infixOrderSearch(no);
+    }
+    return resultNode;
+  }
+
+  // 后序遍历查找
+  public HeroNode postOrderSearch(int no) {
+    HeroNode resultNode = null;
+    if (this.left != null) {
+      resultNode = this.left.postOrderSearch(no);
+    }
+    if (resultNode != null) {
+      return resultNode;
+    }
+    if (this.right != null) {
+      resultNode = this.right.postOrderSearch(no);
+    }
+
+    if (this.no == no) {
+      return this;
+    }
+    return resultNode;
   }
 
 }
