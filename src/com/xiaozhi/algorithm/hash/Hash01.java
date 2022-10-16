@@ -12,6 +12,7 @@ public class Hash01 {
     while (true) {
       System.out.println("add:添加员工");
       System.out.println("list:显示员工");
+      System.out.println("find:查找员工");
       System.out.println("exit:退出系统");
       key = scanner.next();
 
@@ -28,9 +29,14 @@ public class Hash01 {
         case "list":
           hashTable.list();
           break;
+        case "find":
+          System.out.println("输入id");
+          id = scanner.nextInt();
+          hashTable.findEmployee(id);
+          break;
         case "exit":
           scanner.close();
-//          System.exit();
+          System.exit(0);
         default:
           break;
       }
@@ -62,6 +68,17 @@ class HashTable {
     for (int i = 0; i < size; i++) {
       employeeLinkList[i].list();
     }
+  }
+
+  // 根据id查找员工
+  public void findEmployee(int id) {
+    int employeeNo = hashFunc(id);
+    Employee employee = employeeLinkList[employeeNo].findEmployee(id);
+    if (employee == null) {
+      System.out.println("没有找到员工");
+      return;
+    }
+    System.out.printf("找到员工信息id=%d name=%s", employee.id, employee.name);
   }
 
 
