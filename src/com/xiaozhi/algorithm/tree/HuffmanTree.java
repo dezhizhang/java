@@ -8,7 +8,15 @@ public class HuffmanTree {
   public static void main(String[] args) {
     int arr[] = {13, 7, 8, 3, 29, 6, 1};
     Node node = createHuffmanTree(arr);
-    System.out.println("node" + node);
+    preOrder(node);
+  }
+
+  public static void preOrder(Node root) {
+    if (root == null) {
+      System.out.println("该树为空不能遍历~~~");
+      return;
+    }
+    root.preOrder();
   }
 
   public static Node createHuffmanTree(int[] arr) {
@@ -51,6 +59,17 @@ class Node implements Comparable<Node> {
 
   public Node(int value) {
     this.value = value;
+  }
+
+  //前序遍历
+  public void preOrder() {
+    System.out.println(this);
+    if (this.left != null) {
+      this.left.preOrder();
+    }
+    if (this.right != null) {
+      this.right.preOrder();
+    }
   }
 
   @Override
