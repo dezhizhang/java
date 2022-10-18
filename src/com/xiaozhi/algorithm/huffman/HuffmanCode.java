@@ -1,0 +1,69 @@
+package com.xiaozhi.algorithm.huffman;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class HuffmanCode {
+  public static void main(String[] args) {
+    String content = "i like like like java do you like a java";
+    byte[] bytes = content.getBytes();
+
+  }
+
+  public static List<Node> getNodes(byte[] bytes) {
+    //创建一个ArrayList
+    ArrayList nodes = new ArrayList();
+    //遍历bytes 统计每一个byte出现的次数
+    Map<Byte, Integer> map = new HashMap<>();
+    for (byte b : bytes) {
+      Integer count = map.get(b);
+      if (count == null) {
+        map.put(b, 1);
+      } else {
+        map.put(b, count + 1);
+      }
+    }
+    // 把每个键值转成一个Node对像并加入到node集合
+    // 遍历map
+    for (Map.Entry<Byte, Integer> entry : map.entrySet()) {
+      nodes.add(new Node(entry.getKey(), entry.getValue()));
+    }
+    return nodes;
+  }
+}
+
+class Node implements Comparable<Node> {
+  Byte data; // 存放数据本身
+  int weight; // 权值
+  Node left;
+  Node right;
+
+  public Node(Byte data, int weight) {
+    this.data = data;
+    this.weight = weight;
+  }
+
+  @Override
+  public int compareTo(Node o) {
+    //从小到大排序
+    return this.weight - o.weight;
+  }
+
+  @Override
+  public String toString() {
+    return "Node[" + "data=" + data + ", weight=" + weight + ']';
+  }
+
+  // 前序遍历
+  public void perOrder() {
+    System.out.println(this);
+    if (this.left != null) {
+      this.left.perOrder();
+    }
+    if (this.right != null) {
+      this.right.perOrder();
+    }
+  }
+}
