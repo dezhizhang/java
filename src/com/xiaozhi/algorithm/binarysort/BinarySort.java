@@ -2,7 +2,7 @@ package com.xiaozhi.algorithm.binarysort;
 
 public class BinarySort {
   public static void main(String[] args) {
-    int[] arr = {7, 3, 10, 12, 5, 1, 9};
+    int[] arr = {7, 3, 10, 12, 5, 1, 9, 2};
     BinarySortTree binarySortTree = new BinarySortTree();
 
     for (int i = 0; i < arr.length; i++) {
@@ -11,7 +11,9 @@ public class BinarySort {
     }
 
     binarySortTree.infixOrder();
-
+//    binarySortTree.deleteNode(2);
+//    System.out.println("删除节点后");
+//    binarySortTree.infixOrder();
   }
 }
 
@@ -34,6 +36,51 @@ class BinarySortTree {
       return;
     }
     root.infixOrder();
+  }
+
+  //查找要删除的节点
+  public Node search(int value) {
+    if (root != null) {
+      return this.root.search(value);
+    }
+    return null;
+  }
+
+  // 查找父节点
+  public Node searchParent(int value) {
+    if (root != null) {
+      return this.root.searchParent(value);
+    }
+    return null;
+  }
+
+  // 删除结点
+  public void deleteNode(int value) {
+    if (root != null) {
+      Node targetNode = search(value);
+
+      // 如果没有找到要删除的节点
+      if (targetNode == null) {
+        return;
+      }
+      // 如果当前这颗二叉排序树只有一个节点
+      if (root.left == null && root.right == null) {
+        root = null;
+        return;
+      }
+
+      // 找到targetNode的父结点
+      Node parent = searchParent(value);
+      if (targetNode.left == null && targetNode.right == null) {
+        //判断target是父节点的右子节点
+        if (parent.left != null && parent.left.value == value) {
+          parent.left = null;
+        } else if (parent.right != null && parent.right.value == value) {
+          parent.right = null;
+        }
+      }
+
+    }
   }
 
 }
