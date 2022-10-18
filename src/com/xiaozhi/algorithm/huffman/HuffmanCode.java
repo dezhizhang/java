@@ -1,14 +1,16 @@
 package com.xiaozhi.algorithm.huffman;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class HuffmanCode {
   public static void main(String[] args) {
     String content = "i like like like java do you like a java";
     byte[] bytes = content.getBytes();
+
+    List<Node> nodes = getNodes(bytes);
+    Node huffmanTree = createHuffmanTree(nodes);
+    preOrder(huffmanTree);
+//    System.out.println("huffmanTree" + huffmanTree);
 
   }
 
@@ -32,6 +34,40 @@ public class HuffmanCode {
     }
     return nodes;
   }
+
+  // 前序遍历
+  public static void preOrder(Node root) {
+    if(root == null) {
+      System.out.println("树不能为空");
+      return;
+    }
+    root.perOrder();
+  }
+
+  // 通过List创建赫夫曼树
+  public static Node createHuffmanTree(List<Node> nodes) {
+    while (nodes.size() > 1) {
+      //从小到大排序
+      Collections.sort(nodes);
+      // 取出第一颗最小的二叉树
+      Node leftNode = nodes.get(0);
+      // 取出第二棵最小二叉树
+      Node rightNode = nodes.get(1);
+
+      Node parent = new Node(null, leftNode.weight + rightNode.weight);
+      parent.left = leftNode;
+      parent.right = rightNode;
+
+      // 将已处理的两棵二叉树node移除
+      nodes.remove(leftNode);
+      nodes.remove(rightNode);
+
+      nodes.add(parent);
+
+    }
+    return nodes.get(0);
+  }
+
 }
 
 class Node implements Comparable<Node> {
