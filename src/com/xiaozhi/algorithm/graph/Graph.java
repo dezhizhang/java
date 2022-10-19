@@ -26,6 +26,8 @@ public class Graph {
 
     //显示矩阵
     graph.showGraph();
+    //深度遍历
+    graph.dfs();
 
   }
 
@@ -97,7 +99,7 @@ public class Graph {
 
   // 深入优先遍历
   public void dfs(boolean[] isVisited, int i) {
-    System.out.println(getValueByIndex(i) + ">");
+    System.out.printf(getValueByIndex(i) + ">");
     this.isVisited[i] = true;
 
     //查找节点i的第一个邻接结点w
@@ -109,7 +111,15 @@ public class Graph {
       }
       w = getNextNeighbor(i, w);
     }
+  }
 
+  // 对dfs进行一次重载
+  public void dfs() {
+    for (int i = 0; i < getNumOfVertex(); i++) {
+      if (!isVisited[i]) {
+        dfs(isVisited, i);
+      }
+    }
   }
 
 }
