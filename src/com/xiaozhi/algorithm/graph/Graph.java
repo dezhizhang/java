@@ -8,6 +8,8 @@ public class Graph {
   private int[][] edges; // 存储图对应的邻结矩阵
   private int numOfEdges; // 表示边的数目
 
+  private boolean[] isVisited; // 记录某个节点是否被访问
+
   public static void main(String[] args) {
     int n = 5;
     String[] vertexs = {"A", "B", "C", "D", "E"};
@@ -31,6 +33,7 @@ public class Graph {
     this.edges = new int[n][n];
     this.vertexList = new ArrayList<>(n);
     this.numOfEdges = 0;
+    this.isVisited = new boolean[n];
   }
 
   // 插入节点
@@ -70,6 +73,43 @@ public class Graph {
     for (int[] link : edges) {
       System.out.println(Arrays.toString(link));
     }
+  }
+
+  //得到第一个领接接点的下标
+  public int getFirstNeighbor(int index) {
+    for (int j = 0; j < vertexList.size(); j++) {
+      if (edges[index][j] > 0) {
+        return j;
+      }
+    }
+    return -1;
+  }
+
+  //根据前一个领结的下标来获取下一个邻接结点
+  public int getNextNeighbor(int v1, int v2) {
+    for (int j = v2 + 1; j < vertexList.size(); j++) {
+      if (edges[v1][j] > 0) {
+        return j;
+      }
+    }
+    return -1;
+  }
+
+  // 深入优先遍历
+  public void dfs(boolean[] isVisited, int i) {
+    System.out.println(getValueByIndex(i) + ">");
+    this.isVisited[i] = true;
+
+    //查找节点i的第一个邻接结点w
+    int w = getFirstNeighbor(i);
+
+    while (w != -1) {
+      if (!isVisited[w]) {
+        dfs(isVisited, w);
+      }
+      w = getNextNeighbor(i, w);
+    }
+
   }
 
 }
