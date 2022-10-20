@@ -4398,5 +4398,52 @@ public class TwoSum {
   }
 }
 ```
+### 数组的合并
+```java
+public class Merge {
+  public static void main(String[] args) {
+    int[] nums1 = {1, 2, 3, 0, 0, 0};
+    int m = 3;
+    int[] nums2 = {2, 5, 6};
+    int n = 3;
+
+    System.out.println(Arrays.toString(merge(nums1, m, nums2, n)));
+  }
+
+  public static int[] merge(int[] nums1, int m, int[] nums2, int n) {
+    for (int i = 0; i < n; i++) {
+      nums1[m + i] = nums2[i];
+    }
+    Arrays.sort(nums1);
+    return nums1;
+  }
+}
+```
+### 移动非零远素
+```java
+public class MoveZero {
+  public static void main(String[] args) {
+    int[] nums = {0, 1, 0, 3, 12};
+    System.out.println(Arrays.toString(moveZeroes(nums)));
+  }
+
+  public static int[] moveZeroes(int[] nums) {
+    if (nums == null) {
+      return new int[0];
+    }
+    int j = 0;
+    for (int i = 0; i < nums.length; ++i) {
+      if (nums[i] != 0) {
+        nums[j++] = nums[i];
+      }
+    }
+    for (int i = j; i < nums.length; ++i) {
+      nums[i] = 0;
+    }
+    return nums;
+  }
+}
+```
+
 
 
