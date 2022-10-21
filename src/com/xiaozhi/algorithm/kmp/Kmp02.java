@@ -5,10 +5,23 @@ import java.util.Arrays;
 public class Kmp02 {
   public static void main(String[] args) {
     String str1 = "BBC ABCDAB ABCDABCDADDE";
-    String str2 = "ABCDAB";
+    String str2 = "BBC";
 
     int[] next = kmpNext("AAAB");
-    System.out.println("next=" + Arrays.toString(next));
+    int index = kmpSearch(str1,str2,next);
+    System.out.println("index=" + index);
+  }
+
+  public static int kmpSearch(String str1, String str2, int[] next) {
+    for (int i = 0, j = 0; i < str1.length(); i++) {
+      if (str1.charAt(i) == str2.charAt(j)) {
+        j++;
+      }
+      if (j == str2.length()) {
+        return i - j + 1;
+      }
+    }
+    return -1;
   }
 
   public static int[] kmpNext(String dest) {
