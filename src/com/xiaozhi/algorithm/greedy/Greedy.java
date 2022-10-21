@@ -1,7 +1,9 @@
 package com.xiaozhi.algorithm.greedy;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
 
 public class Greedy {
   public static void main(String[] args) {
@@ -35,6 +37,27 @@ public class Greedy {
     hashmap.put("K3", hashSet3);
     hashmap.put("K4", hashSet4);
     hashmap.put("k5", hashSet5);
+
+
+    // all存放所有的地区
+    HashSet<String> allAreas = new HashSet<String>();
+    allAreas.add("北京");
+    allAreas.add("上海");
+    allAreas.add("天津");
+    allAreas.add("广州");
+    allAreas.add("北京");
+    allAreas.add("深圳");
+    allAreas.add("成都");
+    allAreas.add("上海");
+    allAreas.add("杭州");
+    allAreas.add("上海");
+    allAreas.add("天津");
+    allAreas.add("杭州");
+    allAreas.add("大连");
+
+    // 创建一个arrayList存放电台集合
+    List<String> list = new ArrayList<>();
+
 
   }
 }
