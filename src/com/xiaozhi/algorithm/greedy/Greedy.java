@@ -58,6 +58,29 @@ public class Greedy {
     // 创建一个arrayList存放电台集合
     List<String> list = new ArrayList<>();
 
+    HashSet<String> tempSet = new HashSet<>();
+    String maxKey = null;
+    while (allAreas.size() != 0) {
+      maxKey = null;
+      for (String key : hashmap.keySet()) {
+        //每进行一次
+        tempSet.clear();
+        HashSet<String> areas = hashmap.get(key);
+        tempSet.addAll(areas);
+        tempSet.retainAll(allAreas);
+        if (tempSet.size() > 0 && (maxKey == null || tempSet.size() > hashmap.get(maxKey).size())) {
+          maxKey = key;
+        }
+      }
+      if (maxKey != null) {
+        list.add(maxKey);
+        // 将maxKey指向的广播电台
+        allAreas.removeAll(hashmap.get(maxKey));
+      }
+    }
+
+    System.out.println("得到结果" + list);
+
 
   }
 }
