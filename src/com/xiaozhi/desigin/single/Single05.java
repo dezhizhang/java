@@ -28,3 +28,4 @@ class SingleTon05 {
     return instance;
   }
 }
+

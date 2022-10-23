@@ -4544,6 +4544,53 @@ class SingleTon05 {
   }
 }
 ```
+### 静态内部内实现单例模式
+```java
+public class Single06 {
+  public static void main(String[] args) {
+    SingleTon06 singleTon06 = SingleTon06.getInstance();
+    SingleTon06 singleTon07 = SingleTon06.getInstance();
+    System.out.println(singleTon07 == singleTon06);
+  }
+}
+
+
+class SingleTon06 {
+  private static volatile SingleTon06 instance;
+
+  private SingleTon06() {
+  }
+
+  private static class SingleTon06Instance {
+    private static final SingleTon06 INSTANCE = new SingleTon06();
+  }
+
+  public static synchronized SingleTon06 getInstance() {
+    return SingleTon06Instance.INSTANCE;
+  }
+}
+```
+### 枚养实现
+```java
+public class Single07 {
+  public static void main(String[] args) {
+    SingleTon07 instance = SingleTon07.INSTNCE;
+    SingleTon07 instance1 = SingleTon07.INSTNCE;
+
+    instance1.sayOk();
+
+    System.out.println(instance == instance1);
+  }
+}
+
+enum SingleTon07 {
+  INSTNCE;
+  public void sayOk() {
+    System.out.println("ok");
+  }
+}
+
+```
 
 ## 算法leetcode
 ```java
