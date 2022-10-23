@@ -6,7 +6,7 @@ public class SqrtX {
   }
 
   public static int newton(int x) {
-    return (int)sqrt(x,x);
+    return (int) sqrt(x, x);
   }
 
   // 二分法
@@ -29,8 +29,8 @@ public class SqrtX {
     double result = (i + x / i) / 2;
     if (result == i) {
       return i;
-    }else {
-     return sqrt(result,x);
+    } else {
+      return sqrt(result, x);
     }
   }
 }
