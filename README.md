@@ -4392,6 +4392,159 @@ public class Divide {
 }
 
 ```
+### 设计模式
+```java
+public class Single {
+  public static void main(String[] args) {
+    Vehicle vehicle = new Vehicle();
+    vehicle.run("汽转");
+  }
+}
+
+
+class Vehicle {
+  public void run(String vehicle) {
+    System.out.println(vehicle + "交通工具在跑");
+  }
+}
+
+```
+### 单例设计模式
+```java
+public class Single01 {
+  public static void main(String[] args) {
+
+    SingleTon singleTon = SingleTon.getInstance();
+    SingleTon singleTon1 = SingleTon.getInstance();
+
+    System.out.println(singleTon1 == singleTon);
+  }
+}
+
+class SingleTon{
+  private SingleTon() {
+
+  }
+  private final static SingleTon instance = new SingleTon();
+
+  public static SingleTon getInstance() {
+    return instance;
+  }
+}
+
+```
+### 单例设计模式
+```java
+public class Single02 {
+  public static void main(String[] args) {
+    SingleTon02 singleTon02 = SingleTon02.getInstance();
+    SingleTon02 singleTon03 = SingleTon02.getInstance();
+
+    System.out.println(singleTon02 == singleTon03);
+  }
+}
+
+class SingleTon02 {
+  private SingleTon02() {
+  }
+
+  private static SingleTon02 instance;
+
+  static {
+    instance = new SingleTon02();
+  }
+
+  public static SingleTon02 getInstance() {
+    return instance;
+  }
+}
+
+```
+### 懒汉式单例模式
+```java
+public class Single03 {
+  public static void main(String[] args) {
+      SingleTon03 singleTon03 = SingleTon03.getInstance();
+      SingleTon03 singleTon04 = SingleTon03.getInstance();
+      System.out.println(singleTon04 == singleTon03);
+  }
+}
+
+class SingleTon03{
+  private static SingleTon03 instance;
+
+  private SingleTon03() {
+
+  }
+
+  public static SingleTon03 getInstance() {
+    if(instance == null) {
+      instance = new SingleTon03();
+    }
+    return instance;
+  }
+}
+
+```
+### 懒汉式单例模式（线程安全）
+```java
+public class Single04 {
+  public static void main(String[] args) {
+    SingleTon04 singleTon04 = SingleTon04.getInstance();
+    SingleTon04 singleTon05 = SingleTon04.getInstance();
+    System.out.println(singleTon04 == singleTon05);
+  }
+}
+
+class SingleTon04 {
+
+  private static SingleTon04 instance;
+
+  private SingleTon04() {
+
+  }
+
+  public static synchronized SingleTon04 getInstance() {
+    if(instance == null) {
+      instance = new SingleTon04();
+    }
+    return instance;
+  }
+}
+
+```
+### 单例线程安全
+```java
+public class Single05 {
+  public static void main(String[] args) {
+    SingleTon05 instance = SingleTon05.getInstance();
+    SingleTon05 instance1 = SingleTon05.getInstance();
+    System.out.println(instance == instance1);
+
+
+  }
+}
+
+class SingleTon05 {
+  private static volatile SingleTon05 instance;
+
+  private SingleTon05() {
+
+  }
+
+  public static synchronized SingleTon05 getInstance() {
+    if (instance == null) {
+      synchronized (SingleTon05.class) {
+        if (instance == null) {
+          instance = new SingleTon05();
+        }
+      }
+    }
+    return instance;
+  }
+}
+```
+
 ## 算法leetcode
 ```java
 public class TwoSum {
