@@ -4651,6 +4651,70 @@ public class Sheep implements Cloneable {
 }
 
 ```
+### 深拷贝的实现
+```java
+public class DeepProtoType implements Serializable, Cloneable {
+  public String name;
+  public DeepCloneableTarget deepCloneableTarget;
+
+  public DeepProtoType() {
+    super();
+
+  }
+
+  @Override
+  protected Object clone() throws CloneNotSupportedException {
+    Object deep = null;
+    deep = super.clone();
+    //对引用类型进行单独处于
+    DeepProtoType deepProtoType = (DeepProtoType) deep;
+    deepProtoType.deepCloneableTarget = (DeepCloneableTarget) deepCloneableTarget.clone();
+    return deep;
+  }
+}
+
+```
+### 建造者模式
+```java
+public class CommonHouse extends AbstractHouse {
+  @Override
+  public void buildBasic() {
+    System.out.println("普通房子打地基");
+  }
+
+  @Override
+  public void BuildWalls() {
+    System.out.println("普通房子砌墙");
+  }
+
+  @Override
+  public void roofed() {
+    System.out.println("普通房子封顶");
+  }
+}
+
+```
+```java
+
+public abstract class AbstractHouse {
+  //打地基
+  public abstract void buildBasic();
+
+  //砌墙
+  public abstract void BuildWalls();
+
+  //封顶
+  public abstract void roofed();
+
+  public void build() {
+    buildBasic();
+    BuildWalls();
+    roofed();
+
+  }
+}
+
+```
 
 ## 算法leetcode
 ```java

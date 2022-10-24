@@ -5,6 +5,8 @@ public class Prototype01 {
     Sheep sheep = new Sheep("tom", 1, "白色");
     Sheep sheep1 = (Sheep) sheep.clone();
 
+    System.out.println(sheep1 == sheep);
+
     System.out.println(sheep1.toString());
   }
 }
