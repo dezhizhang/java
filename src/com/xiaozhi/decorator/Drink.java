@@ -12,8 +12,12 @@ public abstract class Drink {
     return this.price;
   }
 
-  public void setDes(float price) {
+  public void setPrice(float price) {
     this.price = price;
+  }
+
+  public void setDes(String des) {
+    this.des = des;
   }
 
   // 计算费用的抽象方法
