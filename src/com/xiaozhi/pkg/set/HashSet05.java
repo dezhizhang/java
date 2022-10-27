@@ -44,7 +44,6 @@ class Employee {
     return "Employee{" + "name='" + name + '\'' + ", age=" + age + '}';
   }
 
-  // 如果name和age相同，则返回相同的hash值
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -57,3 +56,5 @@ class Employee {
     return Objects.hash(getName(), getAge());
   }
 }
+
+
