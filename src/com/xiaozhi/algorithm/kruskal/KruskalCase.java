@@ -26,7 +26,7 @@ public class KruskalCase {
 
     // 统计边
     for (int i = 0; i < vLen; i++) {
-      for (int j = 0; j < vLen; j++) {
+      for (int j = i + 1; j < vLen; j++) {
         if (this.matrix[i][j] != INF) {
           edgeNum++;
         }
@@ -73,6 +73,7 @@ public class KruskalCase {
     return -1;
   }
 
+  // 获取边的数组
   public EdgeData[] getEdge() {
     int index = 0;
     EdgeData[] edges = new EdgeData[edgeNum];
@@ -84,6 +85,14 @@ public class KruskalCase {
       }
     }
     return edges;
+  }
+
+  // 获取下标为i顶点的终点
+  public int getEnd(int[] ends, int i) {
+    while (ends[i] != 0) {
+      i = ends[i];
+    }
+    return i;
   }
 
 

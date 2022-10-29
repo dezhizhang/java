@@ -23,7 +23,11 @@ public class Kruskal {
     KruskalCase kruskalCase = new KruskalCase(vertex, matrix);
     kruskalCase.print();
 
-    System.out.println(Arrays.toString(kruskalCase.getEdge()));
+    EdgeData[] edges = kruskalCase.getEdge();
+
+    kruskalCase.sortEdges(edges);
+
+    System.out.println(Arrays.toString(edges));
 
   }
 }
