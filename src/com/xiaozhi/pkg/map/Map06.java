@@ -11,15 +11,12 @@ public class Map06 {
     map.put(1, new Employee("mack", 3, 30, 18000));
 
 
-    Set keySet = map.keySet();
-
-    for (Object key : keySet) {
+    Set set1 = map.keySet();
+    for (Object key : set1) {
       Employee employee = (Employee) map.get(key);
-
       if (employee.getSalary() > 1800) {
         System.out.println(employee);
       }
-
     }
 
 
@@ -28,7 +25,6 @@ public class Map06 {
 
     while (iterator.hasNext()) {
       Map.Entry entry = (Map.Entry) iterator.next();
-
       Employee employee = (Employee) entry.getValue();
       if (employee.getSalary() > 1800) {
         System.out.println(employee);
