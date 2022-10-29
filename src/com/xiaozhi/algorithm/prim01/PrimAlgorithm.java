@@ -1,5 +1,7 @@
 package com.xiaozhi.algorithm.prim01;
 
+import com.xiaozhi.algorithm.graph.Graph;
+
 import java.util.Arrays;
 
 public class PrimAlgorithm {
@@ -23,10 +25,8 @@ public class PrimAlgorithm {
 
     MinTree minTree = new MinTree();
     minTree.createGraph(mGraph, verxs, data, weight);
-//    prim
 
     minTree.prim(mGraph,0);
-//    minTree.showGraph(mGraph);
   }
 }
 
@@ -78,8 +78,9 @@ class MinTree {
       // 重新设置为最大值
       minWeight = 10000;
     }
-
   }
+
+
 }
 
 class MGraph {
