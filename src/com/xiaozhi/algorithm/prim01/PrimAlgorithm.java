@@ -22,9 +22,11 @@ public class PrimAlgorithm {
     MGraph mGraph = new MGraph(verxs);
 
     MinTree minTree = new MinTree();
-    minTree.createGraph(mGraph,verxs,data,weight);
+    minTree.createGraph(mGraph, verxs, data, weight);
+//    prim
 
-    minTree.showGraph(mGraph);
+    minTree.prim(mGraph,0);
+//    minTree.showGraph(mGraph);
   }
 }
 
@@ -42,6 +44,41 @@ class MinTree {
     for (int[] link : graph.weight) {
       System.out.println(Arrays.toString(link));
     }
+  }
+
+  // 编写prim算法
+  public void prim(MGraph graph, int v) {
+    // 标记节点是否被访问过
+    int visited[] = new int[graph.verxs];
+
+    //把当前节点标记为访问
+    visited[v] = 1;
+    //h1和h2记录两个顶点下标
+    int h1 = -1;
+    int h2 = -1;
+
+    // 将minWeight初始成一个大数
+    int minWeight = 10000;
+
+    for (int k = 1; k < graph.verxs; k++) {
+      //i结点表示被访问过的结点
+      for (int i = 0; i < graph.verxs; i++) {
+        for (int j = 0; j < graph.verxs; j++) {
+          //j节点表示还没有访问过的结点
+          if (visited[i] == 1 && visited[j] == 0 && graph.weight[i][j] < minWeight) {
+            minWeight = graph.weight[i][j];
+            h1 = i;
+            h2 = j;
+          }
+        }
+      }
+      // 找到一条边是最小的
+      System.out.println("边<" + graph.data[h1] + "," + graph.data[h2] + "权值" + minWeight);
+      visited[h2] = 1;
+      // 重新设置为最大值
+      minWeight = 10000;
+    }
+
   }
 }
 
