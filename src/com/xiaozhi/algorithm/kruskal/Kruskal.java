@@ -21,13 +21,8 @@ public class Kruskal {
 
     // 创建
     KruskalCase kruskalCase = new KruskalCase(vertex, matrix);
-    kruskalCase.print();
 
-    EdgeData[] edges = kruskalCase.getEdge();
-
-    kruskalCase.sortEdges(edges);
-
-    System.out.println(Arrays.toString(edges));
+    kruskalCase.kruskal();
 
   }
 }

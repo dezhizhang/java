@@ -1,5 +1,7 @@
 package com.xiaozhi.algorithm.kruskal;
 
+import java.util.Arrays;
+
 public class KruskalCase {
   private int edgeNum; //边的个数
   private char[] vertex; // 顶点数组
@@ -123,12 +125,17 @@ public class KruskalCase {
       // 判断是否构成回路
       if (m != n) {
         ends[m] = n; // 设置m在已有最小生成树的终点
+        result[index++] = edges[i];
       }
-
 
     }
 
+    // 统计并打印 "最小生成树"
 
+
+    for(int i=0;i < index;i++) {
+      System.out.println(result[i]);
+    }
   }
 
 
