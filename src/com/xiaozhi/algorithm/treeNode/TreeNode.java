@@ -14,8 +14,26 @@ public class TreeNode {
     Node node1 = new Node(1, node2, node3);
 
 
-    System.out.println(minDepth1(node1));
+//    System.out.println(minDepth1(node1));
+    preorder(node1);
   }
+
+
+  public static void preorder(Node root) {
+    if (root == null) {
+      return;
+    }
+
+    System.out.println(root.val);
+    if (root.left != null) {
+      preorder(root.left);
+    }
+
+    if (root.right != null) {
+      preorder(root.right);
+    }
+  }
+
 
   public static int minDepth(Node root) {
     if (root == null) {
