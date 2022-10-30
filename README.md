@@ -5209,6 +5209,47 @@ class Node {
 }
 
 ```
+### 求取最大字串
+```java
+public class MaxSeq {
+  public static void main(String[] args) {
+    int[] nums = new int[]{1, 2, 3, 2, 3, 4, 3, 4, 5, 6, 7};
+    System.out.println(findLength(nums));
+  }
+  
+  public static int findLength(int[] nums) {
+    int start = 0;
+    int max = 0;
+    for (int i = 0; i < nums.length; i++) {
+      if (i > 0 && nums[i] <= nums[i - 1]) {
+        start = i;
+      }
+      max = Math.max(max, i - start + 1);
+    }
+    return max;
+  }
+}
+```
+### 求最大周长
+```java
+public class Triangles {
+  public static void main(String[] args) {
+    int[] nums = new int[]{3,6,2,3};
+    System.out.println(largesPerimeter(nums));
+  }
+  
+  public static int largesPerimeter(int[] nums) {
+    Arrays.sort(nums);
+    for(int i = nums.length - 1;i >= 2;i--) {
+      if(nums[i - 1] + nums[i - 2] > nums[i]) {
+        return nums[i - 1] + nums[i -2] + nums[i];
+      }
+    }
+    return 0;
+  }
+}
+
+```
 
 
 

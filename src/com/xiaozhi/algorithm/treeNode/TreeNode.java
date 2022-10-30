@@ -1,7 +1,5 @@
 package com.xiaozhi.algorithm.treeNode;
 
-import com.xiaozhi.algorithm.linkList.LinkList;
-
 import java.util.LinkedList;
 import java.util.Queue;
 
@@ -46,6 +44,7 @@ public class TreeNode {
     Queue<Node> queue = new LinkedList<>();
     root.setDeep(1);
     queue.offer(root);
+
     while (!queue.isEmpty()) {
       Node node = queue.poll();
       if (node.left == null && node.right == null) {
@@ -54,7 +53,9 @@ public class TreeNode {
       if (node.left != null) {
         node.left.setDeep(node.deep + 1);
         queue.offer(node.left);
+
       }
+
       if (node.right != null) {
         node.right.setDeep(node.deep + 1);
         queue.offer(node.right);
@@ -62,6 +63,7 @@ public class TreeNode {
     }
     return 0;
   }
+
 
 }
 
