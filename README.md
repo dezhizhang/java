@@ -5091,9 +5091,11 @@ public class LinkCycle {
     ListNode node2 = new ListNode(2, node3);
     ListNode node1 = new ListNode(1, node2);
 
-    node5.next = node1;
+//    node5.next = node1;
 
     System.out.println(hasCycle(node1));
+
+    System.out.println(hasCycle2(node1));
 
   }
 
@@ -5101,12 +5103,29 @@ public class LinkCycle {
     Set<ListNode> set = new HashSet<>();
     while (head.next != null) {
       if(!set.add(head)) {
-          return true;
+        return true;
       }
       head = head.next;
     }
     return false;
   }
+
+  public static boolean hasCycle2(ListNode head) {
+    if(head == null || head.next == null) {
+      return false;
+    }
+    ListNode slow = head;
+    ListNode quick = head.next;
+    while (slow != null) {
+      if(quick == null || quick.next == null) {
+        return false;
+      }
+      slow = slow.next;
+      quick = quick.next.next;
+    }
+    return true;
+  }
+
 }
 
 ```
