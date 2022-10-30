@@ -95,5 +95,41 @@ public class KruskalCase {
     return i;
   }
 
+  //
+  public void kruskal() {
+    int index = 0;
+    int[] ends = new int[edgeNum];
+    EdgeData[] result = new EdgeData[edgeNum];
+
+    // 获取图中所有集合
+    EdgeData[] edges = getEdge();
+
+    // 按照边的大小进行排序
+    sortEdges(edges);
+
+    // 遍历edges数组，将边添加到最小生成树中，判断是否加入的边
+    // 形成回路，如果没有，就加入result否则不能加入
+    for (int i = 0; i < edgeNum; i++) {
+      int p1 = getPosition(edges[i].start);
+
+      int p2 = getPosition(edges[i].end);
+
+      // 获取p1这个顶点在已有最小生成树中的终点
+      int m = getEnd(ends, p1);
+
+      // 获取p2这个顶点在已有最小生成树的终点
+      int n = getEnd(ends, p2);
+
+      // 判断是否构成回路
+      if (m != n) {
+        ends[m] = n; // 设置m在已有最小生成树的终点
+      }
+
+
+    }
+
+
+  }
+
 
 }
