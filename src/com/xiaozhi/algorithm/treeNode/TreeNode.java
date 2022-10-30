@@ -26,12 +26,14 @@ public class TreeNode {
     if(root.left != null) {
       min = Math.min(minDepth(root.left),min);
     }
+
     if(root.right != null) {
       min = Math.min(minDepth(root.right),min);
     }
-
     return min + 1;
+
   }
+
 }
 
 class Node {
