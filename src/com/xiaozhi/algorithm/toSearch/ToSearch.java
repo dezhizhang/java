@@ -8,26 +8,26 @@ public class ToSearch {
     System.out.println(Arrays.toString(toPoint(mums, 10)));
 
   }
-  // 有序查找
-  public static int[] toSearch(int[] numbers, int target) {
-    for (int i = 0; i < numbers.length; i++) {
+
+  public static int[] toSearch(int[] nums, int target) {
+    for (int i = 0; i < nums.length; i++) {
       int low = i;
-      int high = numbers.length - 1;
-      while (low <= high) {
+      int high = nums.length - 1;
+      while (low < high) {
         int mid = (high - low) / 2 + low;
-        if (numbers[mid] == target - numbers[i]) {
+        if (nums[mid] == target - nums[i]) {
           return new int[]{i, mid};
-        } else if (numbers[mid] > target - numbers[i]) {
+        } else if (nums[mid] > target - nums[i]) {
           high = mid - 1;
         } else {
           low = mid + 1;
         }
       }
+
     }
     return new int[0];
   }
-
-  // 双指针查找
+  // 有序查找
   public static int[] toPoint(int[] nums, int target) {
     int low = 0;
     int high = nums.length - 1;
