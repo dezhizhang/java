@@ -4965,5 +4965,106 @@ public class SqrtX {
 
 ```
 
+### 求取最大值
+```java
+public class MaxArea {
+  public static void main(String[] args) {
+    int[] nums= new int[]{1,2,3,4,5,6};
+    System.out.println(sort(nums));
+  }
+
+  public static int sort(int[] nums) {
+    Arrays.sort(nums);
+    int n = nums.length;
+    return Math.max(nums[0] * nums[1] * nums[n - 1], nums[n - 1] * nums[n - 2] * nums[n - 3]);
+  }
+}
+
+```
+### 二数之和
+```
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+public class TwoSum {
+  public static void main(String[] args) {
+    int[] mums = new int[]{1, 2, 3, 4, 5, 6};
+    System.out.println(Arrays.toString(solution(mums, 10)));
+    System.out.println(Arrays.toString(solution1(mums,10)));
+  }
+
+  public static int[] solution(int[] nums, int target) {
+    int len = nums.length;
+    for(int i=0;i < len;i++) {
+      for(int j=1;j < len;j++) {
+        if(nums[i] + nums[j] == target) {
+          return new int[]{i,j};
+        }
+      }
+    }
+    return new int[0];
+  }
+
+  public static int[] solution1(int[] nums,int target) {
+    Map<Integer,Integer> map = new HashMap<>();
+    for(int i=0;i < nums.length;i++) {
+      if(map.containsKey(target - nums[i])) {
+        return new int[]{map.get(target - nums[i]),i};
+      }
+      map.put(nums[i],i);
+    }
+    return new int[0];
+  }
+}
+```
+### 两数之后
+```java
+public class ToSearch {
+  public static void main(String[] args) {
+    int[] mums = new int[]{1, 2, 3, 4, 5, 6};
+    System.out.println(Arrays.toString(toPoint(mums, 10)));
+
+  }
+  // 有序查找
+  public static int[] toSearch(int[] numbers, int target) {
+    for (int i = 0; i < numbers.length; i++) {
+      int low = i;
+      int high = numbers.length - 1;
+      while (low <= high) {
+        int mid = (high - low) / 2 + low;
+        if (numbers[mid] == target - numbers[i]) {
+          return new int[]{i, mid};
+        } else if (numbers[mid] > target - numbers[i]) {
+          high = mid - 1;
+        } else {
+          low = mid + 1;
+        }
+      }
+    }
+    return new int[0];
+  }
+
+  // 双指针查找
+  public static int[] toPoint(int[] nums, int target) {
+    int low = 0;
+    int high = nums.length - 1;
+    while (low < high) {
+      int sum = nums[low] + nums[high];
+      if (sum == target) {
+        return new int[]{low, high};
+      } else if (sum > target) {
+        high = high - 1;
+      } else {
+        low = low + 1;
+      }
+    }
+    return new int[0];
+  }
+
+}
+
+```
+
 
 
