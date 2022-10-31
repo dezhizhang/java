@@ -11,7 +11,7 @@ public class SelectSort {
 //
 //    System.out.println(Arrays.toString(arr));
 
-    int[] arr = new int[800000];
+    int[] arr = new int[80000];
     for(int i=0;i < 80000;i++) {
       arr[i] = (int)(Math.random() * 80000);
     }
