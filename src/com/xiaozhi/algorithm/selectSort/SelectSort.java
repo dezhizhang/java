@@ -12,17 +12,21 @@ public class SelectSort {
 
   // 选择排序
   public static void selectSort(int[] arr) {
-    int minIndex = 0;
-    int min = arr[minIndex];
+    for(int i= 0;i < arr.length - 1;i++) {
+      int minIndex = i;
+      int min = arr[i];
 
-    for (int j = 1; j < arr.length; j++) {
-      if (min > arr[j]) {
-        min = arr[j];
-        minIndex = j;
+      for(int j = i + 1;j < arr.length;j++) {
+        if(min > arr[j]) {
+          min = arr[j];
+          minIndex = j;
+        }
+      }
+      if(minIndex != i) {
+        arr[minIndex] = arr[i];
+        arr[i] = min;
       }
     }
-    arr[minIndex] = arr[0];
-    arr[0] = min;
   }
 
 }
