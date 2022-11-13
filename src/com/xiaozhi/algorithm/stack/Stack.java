@@ -2,7 +2,7 @@ package com.xiaozhi.algorithm.stack;
 
 import java.util.Scanner;
 
-public class Stack {
+public class Stack<C> {
   public static void main(String[] args) {
     ArrayStack stack = new ArrayStack(4);
     String key = "";
