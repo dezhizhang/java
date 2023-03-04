@@ -1,15 +1,19 @@
 package com.tower.view;
 
+import com.tower.domain.Employee;
+import com.tower.serice.EmployService;
+
 import java.util.Scanner;
 
 public class ManinView {
   private boolean loop = true;
   private String key = "";
 
-  private String userId = "";
+  private Integer userId = 0;
 
   private String password = "";
 
+  private EmployService employService = new EmployService();
 
   public static void main(String[] args) {
     new ManinView().mainMenu();
@@ -29,13 +33,21 @@ public class ManinView {
       switch (key) {
         case "1":
           System.out.println("输入员工号:");
-          userId = scanner.next();
+          userId = scanner.nextInt();
           System.out.println("请输入密码：");
           password = scanner.next();
-          if(!("123".equals(password))) {
+          Employee employee =  employService.getEmployeeByIdAndName(userId,password);
+          if(employee == null) {
             System.out.println("登录失败");
+            loop = false;
             break;
           }
+          System.out.println(employee.getName());
+          loop = false;
+//          if (!("123".equals(password))) {
+//            System.out.println("登录失败");
+//            break;
+//          }
 
           while (loop) {
             System.out.println("============满汉楼二级菜单========");
