@@ -1,8 +1,11 @@
 package com.tower.view;
 
+import com.tower.domain.Dining;
 import com.tower.domain.Employee;
+import com.tower.serice.DiningService;
 import com.tower.serice.EmployService;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class ManinView {
@@ -14,9 +17,19 @@ public class ManinView {
   private String password = "";
 
   private EmployService employService = new EmployService();
+  private DiningService diningService = new DiningService();
 
   public static void main(String[] args) {
     new ManinView().mainMenu();
+  }
+
+  // 显示餐桌所有状态
+  public void showDiningStatus() {
+    List<Dining> list = diningService.list();
+    for (Dining dining:list) {
+      System.out.println(dining);
+    }
+    System.out.println("=======显示完毕=====");
   }
 
   // 显示主菜单
@@ -39,15 +52,8 @@ public class ManinView {
           Employee employee =  employService.getEmployeeByIdAndName(userId,password);
           if(employee == null) {
             System.out.println("登录失败");
-            loop = false;
             break;
           }
-          System.out.println(employee.getName());
-          loop = false;
-//          if (!("123".equals(password))) {
-//            System.out.println("登录失败");
-//            break;
-//          }
 
           while (loop) {
             System.out.println("============满汉楼二级菜单========");
@@ -60,7 +66,7 @@ public class ManinView {
             System.out.println("\t\t 9 通出系统");
             switch (key) {
               case "1":
-                System.out.println("显示餐桌状态");
+                showDiningStatus();
                 break;
               case "2":
                 System.out.println("预定餐桌");
