@@ -54,23 +54,25 @@ public class SpringBeanTest {
   @Test
   public void setBeanByNamespace() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    Monster monster = ioc.getBean("monster03",Monster.class);
+    Monster monster = ioc.getBean("monster03", Monster.class);
 
     System.out.println(monster);
   }
+
   @Test
 
   public void setBeanByRef() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    MemberServiceImpl memberService = ioc.getBean("memberService",MemberServiceImpl.class);
+    MemberServiceImpl memberService = ioc.getBean("memberService", MemberServiceImpl.class);
     memberService.add();
 
   }
+
   @Test
 
   public void setInsertBy() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    MemberServiceImpl memberService = ioc.getBean("memberService2",MemberServiceImpl.class);
+    MemberServiceImpl memberService = ioc.getBean("memberService2", MemberServiceImpl.class);
     memberService.add();
   }
 
@@ -78,15 +80,31 @@ public class SpringBeanTest {
   @Test
   public void setBeanByCollection() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    Master master = ioc.getBean("master",Master.class);
+    Master master = ioc.getBean("master", Master.class);
     System.out.println(master);
   }
 
   @Test
   public void setBeanByMap() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    Master master = ioc.getBean("master",Master.class);
+    Master master = ioc.getBean("master", Master.class);
     System.out.println(master);
+  }
+
+  @Test
+  public void getBeanByStaticFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+
+    Monster my_monster01 = ioc.getBean("my_monster01", Monster.class);
+    System.out.println("my_monster01=" + my_monster01);
+
+  }
+
+  @Test
+  public void getBeanByInstanceFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster my_monster03 = ioc.getBean("my_monster02", Monster.class);
+    System.out.println("my_monster03=" + my_monster03);
   }
 
 

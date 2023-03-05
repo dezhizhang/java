@@ -42,24 +42,16 @@
     </property>
   </bean>
 
-  <!---->
-  <bean class="com.spring.bean.Master" id="master">
-    <property name="name" value="太上老君"/>
-    <property name="monsterList">
-      <list>
-        <ref bean="monster01"/>
-      </list>
-    </property>
-
-    <property name="monsterMap">
-      <map>
-        <entry>
-          <key>
-            <value>monster01</value>
-          </key>
-          <ref bean="monster01"/>
-        </entry>
-      </map>
-    </property>
+  <!--通过静态工厂-->
+  <bean id="my_monster01" class="com.spring.factory.MyStaticFactory" factory-method="getMonster">
+    <constructor-arg value="monster01"/>
   </bean>
+
+  <!--配置实例工厂对像-->
+  <bean class="com.spring.factory.MyInstanceFactory" id="myInstanceFactory"/>
+  <!--通过实例工厂-->
+  <bean id="my_monster02" factory-bean="myInstanceFactory" factory-method="getMonster">
+    <constructor-arg value="monster03"/>
+  </bean>
+
 </beans>

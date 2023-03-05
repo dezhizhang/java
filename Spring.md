@@ -106,3 +106,66 @@ public class SpringBeanTest {
     memberService.add();
   }
 ```
+
+### 通过静态工厂
+
+```
+  <!--通过静态工厂-->
+  <bean id="my_monster01" class="com.spring.factory.MyStaticFactory" factory-method="getMonster">
+    <constructor-arg value="monster01"/>
+  </bean>
+  
+  public class MyStaticFactory {
+  
+    private static Map<String, Monster> monsterMap;
+  
+    static {
+      monsterMap = new HashMap<>();
+      monsterMap.put("monster01", new Monster(100, "牛魔王", "巨贪"));
+      monsterMap.put("monster01", new Monster(200, "孤狸精", "美人计"));
+    }
+  
+    public static Monster getMonster(String key) {
+      return monsterMap.get(key);
+    }
+  
+  }
+
+  
+  public void getBeanByStaticFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+
+    Monster my_monster01 = ioc.getBean("my_monster01", Monster.class);
+    System.out.println("my_monster01=" + my_monster01);
+
+  }
+```
+### 实例工厂
+```
+  <!--配置实例工厂对像-->
+  <bean class="com.spring.factory.MyInstanceFactory" id="myInstanceFactory"/>
+  <!--通过实例工厂-->
+  <bean id="my_monster02" factory-bean="myInstanceFactory" factory-method="getMonster">
+    <constructor-arg value="monster03"/>
+  </bean>
+  
+  public class MyInstanceFactory {
+    private Map<String, Monster> monsterMap;
+  
+    {
+      monsterMap = new HashMap<>();
+      monsterMap.put("monster03", new Monster(300, "牛魔王~", "巨贪~"));
+      monsterMap.put("monster04", new Monster(400, "孤狸精~", "美人计~"));
+    }
+  
+    public Monster getMonster(String key) {
+      return monsterMap.get(key);
+    }
+  }
+  
+  public void getBeanByInstanceFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster my_monster03 = ioc.getBean("my_monster02", Monster.class);
+    System.out.println("my_monster03=" + my_monster03);
+  }
+```
