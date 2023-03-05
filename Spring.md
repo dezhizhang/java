@@ -169,3 +169,52 @@ public class SpringBeanTest {
     System.out.println("my_monster03=" + my_monster03);
   }
 ```
+### 通过factory来获取bean
+```
+  <!--通过factoryBean获取-->
+  <bean id="my_monster03" class="com.spring.factory.MyFactoryBean">
+    <property name="key" value="monster06"/>
+  </bean>
+  
+  public class MyFactoryBean implements FactoryBean<Monster> {
+    private String key;
+  
+    private Map<String,Monster> monsterMap;
+  
+    {
+      monsterMap = new HashMap<>();
+      monsterMap.put("monster05", new Monster(300, "牛魔王~", "巨贪~"));
+      monsterMap.put("monster06", new Monster(400, "孤狸1111", "美人计111"));
+    }
+  
+    @Override
+    public Monster getObject() throws Exception {
+      return monsterMap.get(key);
+    }
+  
+    @Override
+    public Class<?> getObjectType() {
+      return Monster.class;
+    }
+  
+    @Override
+    public boolean isSingleton() {
+      return FactoryBean.super.isSingleton();
+    }
+  
+    public void setKey(String key) {
+      this.key = key;
+    }
+  
+    public String getKey() {
+      return key;
+    }
+  }
+  
+  public void  getBeanByFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster my_monster03 = ioc.getBean("my_monster03", Monster.class);
+    System.out.println("my_monster03=" + my_monster03);
+  }
+    
+```

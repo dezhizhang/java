@@ -107,5 +107,12 @@ public class SpringBeanTest {
     System.out.println("my_monster03=" + my_monster03);
   }
 
+  @Test
+  public void  getBeanByFactory() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster my_monster03 = ioc.getBean("my_monster03", Monster.class);
+    System.out.println("my_monster03=" + my_monster03);
+  }
+
 
 }

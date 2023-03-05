@@ -54,4 +54,9 @@
     <constructor-arg value="monster03"/>
   </bean>
 
+  <!--通过factoryBean获取-->
+  <bean id="my_monster03" class="com.spring.factory.MyFactoryBean">
+    <property name="key" value="monster06"/>
+  </bean>
+
 </beans>
