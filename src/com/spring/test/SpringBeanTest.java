@@ -76,11 +76,17 @@ public class SpringBeanTest {
 
   // 给集膈或数组属性赋值
   @Test
-  public void  setBeanByCollection() {
+  public void setBeanByCollection() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     Master master = ioc.getBean("master",Master.class);
     System.out.println(master);
+  }
 
+  @Test
+  public void setBeanByMap() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Master master = ioc.getBean("master",Master.class);
+    System.out.println(master);
   }
 
 

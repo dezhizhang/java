@@ -50,7 +50,21 @@
         <ref bean="monster01"/>
       </list>
     </property>
+
+    <property name="monsterMap">
+      <map>
+        <entry>
+          <key>
+            <value>monster01</value>
+          </key>
+          <ref bean="monster01"/>
+        </entry>
+      </map>
+    </property>
+
   </bean>
+
+
 
 
 </beans>

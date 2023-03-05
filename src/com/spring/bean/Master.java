@@ -5,7 +5,7 @@ import java.util.*;
 public class Master {
   private String name;
   private List<Monster> monsterList;
-  private Map<String, Master> masterMap;
+  private Map<String, Monster> monsterMap;
   private Set<Master> masterSet;
   private String[] masterName;
   private Properties props;
@@ -13,10 +13,10 @@ public class Master {
   public Master() {
   }
 
-  public Master(String name,List<Monster> masterList, Map<String,Master> masterMap,Set<Master> masterSet,String[] masterName,Properties props) {
+  public Master(String name,List<Monster> masterList, Map<String,Monster> monsterMap,Set<Master> masterSet,String[] masterName,Properties props) {
     this.name = name;
     this.monsterList = masterList;
-    this.masterMap = masterMap;
+    this.monsterMap = monsterMap;
     this.masterName = masterName;
     this.props = props;
     this.masterSet = masterSet;
@@ -38,12 +38,12 @@ public class Master {
     this.monsterList = monsterList;
   }
 
-  public Map<String, Master> getMasterMap() {
-    return masterMap;
+  public Map<String, Monster> getMonsterMap() {
+    return monsterMap;
   }
 
-  public void setMasterMap(Map<String, Master> masterMap) {
-    this.masterMap = masterMap;
+  public void setMonsterMap(Map<String, Monster> monsterMap) {
+    this.monsterMap = monsterMap;
   }
 
   public Set<Master> getMasterSet() {
@@ -75,7 +75,7 @@ public class Master {
     return "Master{" +
       "name='" + name + '\'' +
       ", monsterList=" + monsterList +
-      ", masterMap=" + masterMap +
+      ", monsterMap=" + monsterMap +
       ", masterSet=" + masterSet +
       ", masterName=" + Arrays.toString(masterName) +
       ", props=" + props +
