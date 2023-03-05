@@ -29,4 +29,14 @@ public class SpringBeanTest {
     System.out.println("file=" + file);
 
   }
+  //通过类型来加载bean
+  @Test
+  public void getBeanByType() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean(Monster.class);
+
+    System.out.println(monster);
+  }
+
+
 }

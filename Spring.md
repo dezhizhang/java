@@ -1,5 +1,7 @@
 # Spring
+
 ### ioc
+
 ```java
 package com.spring.test;
 
@@ -13,14 +15,14 @@ import java.io.File;
 public class SpringBeanTest {
 
   @Test
-  public void  getMonster() {
+  public void getMonster() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    Monster monster = ioc.getBean("monster01",Monster.class);
+    Monster monster = ioc.getBean("monster01", Monster.class);
     System.out.println(monster);
 
     // 查看容器注入那些对像
     String[] definitionNames = ioc.getBeanDefinitionNames();
-    for(String definitionName:definitionNames) {
+    for (String definitionName : definitionNames) {
       System.out.println(definitionName);
     }
 
@@ -28,11 +30,21 @@ public class SpringBeanTest {
 
   //类加载路径
   @Test
-  public void  classPath() {
+  public void classPath() {
     File file = new File(this.getClass().getResource("/").getPath());
     System.out.println("file=" + file);
 
   }
 }
 
+```
+
+### 通过类型来加载bean
+
+```
+  public void getBeanByType() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean(Monster.class);
+    System.out.println(monster);
+  }
 ```
