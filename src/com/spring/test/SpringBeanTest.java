@@ -58,9 +58,10 @@ public class SpringBeanTest {
     System.out.println(monster);
   }
   @Test
-  public void  setBeanByRef() {
+
+  public void setBeanByRef() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    MemberServiceImpl memberService = ioc.getBean("memberService", MemberServiceImpl.class);
+    MemberServiceImpl memberService = ioc.getBean("memberService",MemberServiceImpl.class);
     memberService.add();
 
   }
