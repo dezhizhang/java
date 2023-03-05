@@ -35,5 +35,22 @@
     <property name="memberDao" ref="memberDao"/>
   </bean>
 
+  <!--使用内部bean-->
+  <bean class="com.spring.service.MemberServiceImpl" id="memberService2">
+    <property name="memberDao">
+      <bean class="com.spring.dao.MemberDaoImpl"></bean>
+    </property>
+  </bean>
+
+  <!---->
+  <bean class="com.spring.bean.Master" id="master">
+    <property name="name" value="太上老君"/>
+    <property name="monsterList">
+      <list>
+        <ref bean="monster01"/>
+      </list>
+    </property>
+  </bean>
+
 
 </beans>

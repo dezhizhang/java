@@ -1,5 +1,6 @@
 package com.spring.test;
 
+import com.spring.bean.Master;
 import com.spring.bean.Monster;
 import com.spring.service.MemberServiceImpl;
 import org.junit.jupiter.api.Test;
@@ -63,6 +64,22 @@ public class SpringBeanTest {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     MemberServiceImpl memberService = ioc.getBean("memberService",MemberServiceImpl.class);
     memberService.add();
+
+  }
+  @Test
+
+  public void setInsertBy() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    MemberServiceImpl memberService = ioc.getBean("memberService2",MemberServiceImpl.class);
+    memberService.add();
+  }
+
+  // 给集膈或数组属性赋值
+  @Test
+  public void  setBeanByCollection() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Master master = ioc.getBean("master",Master.class);
+    System.out.println(master);
 
   }
 

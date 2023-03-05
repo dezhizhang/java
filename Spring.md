@@ -91,3 +91,18 @@ public class SpringBeanTest {
 
 
 ```
+
+### 使用内部bean
+
+```
+  <bean class="com.spring.service.MemberServiceImpl" id="memberService2">
+    <property name="memberDao">
+      <bean class="com.spring.dao.MemberDaoImpl"></bean>
+    </property>
+  </bean>
+  public void setInsertBy() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    MemberServiceImpl memberService = ioc.getBean("memberService2",MemberServiceImpl.class);
+    memberService.add();
+  }
+```
