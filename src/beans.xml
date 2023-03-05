@@ -1,17 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <!--<bean class="com.spring.bean.Monster" id="monster01">-->
-  <!--  <property name="monsterId" value="100"/>-->
-  <!--  <property name="name" value="刘德华"/>-->
-  <!--  <property name="skill" value="演讲"/>-->
-  <!--</bean>-->
+  <bean class="com.spring.bean.Monster" id="monster01">
+    <property name="monsterId" value="100"/>
+    <property name="name" value="刘德华"/>
+    <property name="skill" value="演讲"/>
+  </bean>
 
   <bean class="com.spring.bean.Monster">
     <property name="monsterId" value="101"/>
     <property name="name" value="周华建"/>
     <property name="skill" value="演讲"/>
   </bean>
+
+  <bean class="com.spring.bean.Monster" id="monster02">
+    <constructor-arg value="101" index="0"/>
+    <constructor-arg value="刘德华111" index="1"/>
+    <constructor-arg value="演讲" index="2"/>
+  </bean>
+
+  <bean class="com.spring.bean.Monster" id="monster03"
+        p:monsterId="500"
+        p:name="红孩儿"
+        p:skill="吐火"
+  >
+  </bean>
+
+
 </beans>

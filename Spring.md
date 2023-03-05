@@ -2,7 +2,7 @@
 
 ### ioc
 
-```java
+```
 package com.spring.test;
 
 import com.spring.bean.Monster;
@@ -45,6 +45,29 @@ public class SpringBeanTest {
   public void getBeanByType() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     Monster monster = ioc.getBean(Monster.class);
+    System.out.println(monster);
+  }
+```
+
+### 通过构建器配置bean
+
+```
+  public void setBeanConstructor() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean("monster02", Monster.class);
+    System.out.println(monster);
+
+  }
+
+```
+
+### 通过p名称空间来配置bean
+
+```
+  public void setBeanByNamespace() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean("monster03",Monster.class);
+
     System.out.println(monster);
   }
 ```
