@@ -71,3 +71,23 @@ public class SpringBeanTest {
     System.out.println(monster);
   }
 ```
+
+### 通过ref来配置bean
+
+```
+  <!--配置dao对像-->
+  <bean class="com.spring.dao.MemberDaoImpl" id="memberDao"/>
+  <!--配置service对像-->
+  <bean class="com.spring.service.MemberServiceImpl" id="memberService">
+    <property name="memberDao" ref="memberDao"/>
+  </bean>
+  
+  public void  setBeanByRef() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    MemberServiceImpl memberService = ioc.getBean("memberService", MemberServiceImpl.class);
+    memberService.add();
+
+  }
+
+
+```

@@ -1,6 +1,7 @@
 package com.spring.test;
 
 import com.spring.bean.Monster;
+import com.spring.service.MemberServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -55,6 +56,13 @@ public class SpringBeanTest {
     Monster monster = ioc.getBean("monster03",Monster.class);
 
     System.out.println(monster);
+  }
+  @Test
+  public void  setBeanByRef() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    MemberServiceImpl memberService = ioc.getBean("memberService", MemberServiceImpl.class);
+    memberService.add();
+
   }
 
 

@@ -28,5 +28,12 @@
   >
   </bean>
 
+  <!--配置dao对像-->
+  <bean class="com.spring.dao.MemberDaoImpl" id="memberDao"/>
+  <!--配置service对像-->
+  <bean class="com.spring.service.MemberServiceImpl" id="memberService">
+    <property name="memberDao" ref="memberDao"/>
+  </bean>
+
 
 </beans>
