@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean class="com.spring.bean.Monster" id="monster01">
+    <property name="monsterId" value="100"/>
+    <property name="name" value="刘德华"/>
+    <property name="skill" value="演讲"/>
+  </bean>
+</beans>
