@@ -140,7 +140,9 @@ public class SpringBeanTest {
 
   }
 ```
+
 ### 实例工厂
+
 ```
   <!--配置实例工厂对像-->
   <bean class="com.spring.factory.MyInstanceFactory" id="myInstanceFactory"/>
@@ -169,7 +171,9 @@ public class SpringBeanTest {
     System.out.println("my_monster03=" + my_monster03);
   }
 ```
+
 ### 通过factory来获取bean
+
 ```
   <!--通过factoryBean获取-->
   <bean id="my_monster03" class="com.spring.factory.MyFactoryBean">
@@ -217,4 +221,46 @@ public class SpringBeanTest {
     System.out.println("my_monster03=" + my_monster03);
   }
     
+```
+
+### 单例模式
+
+```
+  <bean class="com.spring.bean.Cat" id="cat" scope="prototype">
+    <property name="id" value="100"></property>
+    <property name="name" value="小花猫"></property>
+  </bean>
+  
+  public class Cat {
+    private Integer id;
+    private String name;
+  
+    public Cat() {
+      System.out.println("cat执行了");
+    }
+  
+    public Integer getId() {
+      return id;
+    }
+  
+    public void setId(Integer id) {
+      this.id = id;
+    }
+  
+    public String getName() {
+      return name;
+    }
+  
+    public void setName(String name) {
+      this.name = name;
+    }
+  }
+  public void getBeanSingle() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Cat cat = ioc.getBean("cat",Cat.class);
+    Cat cat1 = ioc.getBean("cat",Cat.class);
+
+    System.out.println(cat1 == cat);
+  }
+ 
 ```

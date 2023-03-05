@@ -1,5 +1,6 @@
 package com.spring.test;
 
+import com.spring.bean.Cat;
 import com.spring.bean.Master;
 import com.spring.bean.Monster;
 import com.spring.service.MemberServiceImpl;
@@ -112,6 +113,15 @@ public class SpringBeanTest {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     Monster my_monster03 = ioc.getBean("my_monster03", Monster.class);
     System.out.println("my_monster03=" + my_monster03);
+  }
+
+  @Test
+  public void getBeanSingle() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Cat cat = ioc.getBean("cat",Cat.class);
+    Cat cat1 = ioc.getBean("cat",Cat.class);
+
+    System.out.println(cat1 == cat);
   }
 
 
