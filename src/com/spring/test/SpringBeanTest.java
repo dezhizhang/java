@@ -7,6 +7,7 @@ import com.spring.bean.Monster;
 import com.spring.service.MemberServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.io.File;
@@ -127,10 +128,9 @@ public class SpringBeanTest {
   public void getBeanLifeCycle() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     House house = ioc.getBean("house",House.class);
-//    house.destroy();
+
+    ((ConfigurableApplicationContext) ioc).close();
     System.out.println(house);
-//
-//    ioc.
   }
 
 
