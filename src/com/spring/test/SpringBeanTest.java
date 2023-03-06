@@ -133,5 +133,12 @@ public class SpringBeanTest {
     System.out.println(house);
   }
 
+  @Test
+  public void testBeanProperty() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean("monster",Monster.class);
+    System.out.println(monster);
+  }
+
 
 }

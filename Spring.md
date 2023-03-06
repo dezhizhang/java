@@ -263,4 +263,25 @@ public class SpringBeanTest {
     System.out.println(cat1 == cat);
   }
  
+ 
+```
+### 获取属性文件my.properties
+```
+  monsterId = 1000
+  name = jack
+  skill = hello
+
+  <context:property-placeholder location="classpath:my.properties"/>
+  <bean class="com.spring.bean.Monster" id="monster">
+    <property name="monsterId" value="${monsterId}"/>
+    <property name="name" value="${name}"/>
+    <property name="skill" value="${skill}"/>
+  </bean>
+  
+  public void testBeanProperty() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    Monster monster = ioc.getBean("monster",Monster.class);
+    System.out.println(monster);
+  }
+  
 ```
