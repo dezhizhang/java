@@ -5,6 +5,7 @@ import com.spring.bean.House;
 import com.spring.bean.Master;
 import com.spring.bean.Monster;
 import com.spring.service.MemberServiceImpl;
+import com.spring.web.OrderAction;
 import org.junit.jupiter.api.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -138,6 +139,16 @@ public class SpringBeanTest {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     Monster monster = ioc.getBean("monster",Monster.class);
     System.out.println(monster);
+  }
+
+  @Test
+  public void testBeanAutowire() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    OrderAction orderAction = ioc.getBean("orderAction", OrderAction.class);
+
+
+    System.out.println(orderAction.getOrderService());
+    System.out.println(orderAction.getOrderService().getOrderDao());
   }
 
 

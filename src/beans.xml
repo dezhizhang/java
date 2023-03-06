@@ -5,12 +5,17 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
 
 
-  <context:property-placeholder location="classpath:my.properties"/>
-  <bean class="com.spring.bean.Monster" id="monster">
-    <property name="monsterId" value="${monsterId}"/>
-    <property name="name" value="${name}"/>
-    <property name="skill" value="${skill}"/>
-  </bean>
+  <bean class="com.spring.dao.OrderDao" id="orderDao"/>
+  <bean autowire="byType" class="com.spring.service.OrderService" id="service"/>
+  <bean autowire="byType" class="com.spring.web.OrderAction" id="orderAction"/>
+
+
+  <!--<context:property-placeholder location="classpath:my.properties"/>-->
+  <!--<bean class="com.spring.bean.Monster" id="monster">-->
+  <!--  <property name="monsterId" value="${monsterId}"/>-->
+  <!--  <property name="name" value="${name}"/>-->
+  <!--  <property name="skill" value="${skill}"/>-->
+  <!--</bean>-->
 
   <!--配置house-->
   <!--<bean id="house"-->
