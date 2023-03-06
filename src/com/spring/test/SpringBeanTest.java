@@ -144,12 +144,12 @@ public class SpringBeanTest {
   @Test
   public void testBeanAutowire() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
-    OrderAction orderAction = ioc.getBean("orderAction", OrderAction.class);
-
+    OrderAction orderAction = ioc.getBean("orderAction",OrderAction.class);
 
     System.out.println(orderAction.getOrderService());
     System.out.println(orderAction.getOrderService().getOrderDao());
   }
+
 
 
 }
