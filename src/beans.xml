@@ -3,7 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean class="com.spring.bean.Cat" id="cat" scope="prototype">
+
+  <!--配置house-->
+  <bean id="house"
+        class="com.spring.bean.House"
+        init-method="init"
+        destroy-method="destroy"
+  >
+    <property name="name" value="北京大院"/>
+  </bean>
+
+  <bean class="com.spring.bean.Cat" id="cat" scope="prototype" lazy-init="true">
     <property name="id" value="100"></property>
     <property name="name" value="小花猫"></property>
   </bean>
@@ -34,18 +44,18 @@
   </bean>
 
   <!--配置dao对像-->
-  <bean class="com.spring.dao.MemberDaoImpl" id="memberDao"/>
-  <!--配置service对像-->
-  <bean class="com.spring.service.MemberServiceImpl" id="memberService">
-    <property name="memberDao" ref="memberDao"/>
-  </bean>
+  <!--<bean class="com.spring.dao.MemberDaoImpl" id="memberDao"/>-->
+  <!--&lt;!&ndash;配置service对像&ndash;&gt;-->
+  <!--<bean class="com.spring.service.MemberServiceImpl" id="memberService">-->
+  <!--  <property name="memberDao" ref="memberDao"/>-->
+  <!--</bean>-->
 
-  <!--使用内部bean-->
-  <bean class="com.spring.service.MemberServiceImpl" id="memberService2">
-    <property name="memberDao">
-      <bean class="com.spring.dao.MemberDaoImpl"></bean>
-    </property>
-  </bean>
+  <!--&lt;!&ndash;使用内部bean&ndash;&gt;-->
+  <!--<bean class="com.spring.service.MemberServiceImpl" id="memberService2">-->
+  <!--  <property name="memberDao">-->
+  <!--    <bean class="com.spring.dao.MemberDaoImpl"></bean>-->
+  <!--  </property>-->
+  <!--</bean>-->
 
   <!--通过静态工厂-->
   <bean id="my_monster01" class="com.spring.factory.MyStaticFactory" factory-method="getMonster">

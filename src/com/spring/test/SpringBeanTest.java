@@ -1,6 +1,7 @@
 package com.spring.test;
 
 import com.spring.bean.Cat;
+import com.spring.bean.House;
 import com.spring.bean.Master;
 import com.spring.bean.Monster;
 import com.spring.service.MemberServiceImpl;
@@ -119,9 +120,17 @@ public class SpringBeanTest {
   public void getBeanSingle() {
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
     Cat cat = ioc.getBean("cat",Cat.class);
-    Cat cat1 = ioc.getBean("cat",Cat.class);
+    System.out.println(cat);
+  }
 
-    System.out.println(cat1 == cat);
+  @Test
+  public void getBeanLifeCycle() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans.xml");
+    House house = ioc.getBean("house",House.class);
+//    house.destroy();
+    System.out.println(house);
+//
+//    ioc.
   }
 
 
