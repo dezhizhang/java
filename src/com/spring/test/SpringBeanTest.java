@@ -4,6 +4,9 @@ import com.spring.bean.Cat;
 import com.spring.bean.House;
 import com.spring.bean.Master;
 import com.spring.bean.Monster;
+import com.spring.component.UserController;
+import com.spring.component.UserDao;
+import com.spring.component.UserService;
 import com.spring.service.MemberServiceImpl;
 import com.spring.web.OrderAction;
 import org.junit.jupiter.api.Test;
@@ -148,6 +151,30 @@ public class SpringBeanTest {
 
     System.out.println(orderAction.getOrderService());
     System.out.println(orderAction.getOrderService().getOrderDao());
+  }
+
+  // 通过注解配置bean
+  @Test
+  public void setBeanByAnnotation() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans01.xml");
+
+    UserDao userDao = ioc.getBean(UserDao.class);
+    UserService userService = ioc.getBean(UserService.class);
+    UserController userController = ioc.getBean(UserController.class);
+
+
+    System.out.println("userDao=" + userDao);
+    System.out.println("userService" + userService);
+    System.out.println("userController" + userController);
+
+  }
+
+  @Test
+  public void setProByAutowired() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans02.xml");
+    UserController userController = ioc.getBean("userController",UserController.class);
+    userController.sayOk();
+    System.out.println("userController=" + userController);
   }
 
 

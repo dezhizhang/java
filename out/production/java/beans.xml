@@ -13,9 +13,9 @@
   <!--<bean autowire="byType" class="com.spring.service.OrderService" id="service"/>-->
   <!--<bean autowire="byType" class="com.spring.web.OrderAction" id="orderAction"/>-->
 
-  <bean class="com.spring.dao.OrderDao" id="orderDao"/>
-  <bean autowire="byName" class="com.spring.service.OrderService" id="service"/>
-  <bean autowire="byName" class="com.spring.web.OrderAction" id="orderAction"/>
+  <!--<bean class="com.spring.dao.OrderDao" id="orderDao"/>-->
+  <!--<bean autowire="byName" class="com.spring.service.OrderService" id="service"/>-->
+  <!--<bean autowire="byName" class="com.spring.web.OrderAction" id="orderAction"/>-->
 
 
   <!--<context:property-placeholder location="classpath:my.properties"/>-->
