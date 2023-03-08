@@ -7,6 +7,7 @@ import com.spring.bean.Monster;
 import com.spring.component.UserController;
 import com.spring.component.UserDao;
 import com.spring.component.UserService;
+import com.spring.depinjection.PhoneService;
 import com.spring.service.MemberServiceImpl;
 import com.spring.web.OrderAction;
 import org.junit.jupiter.api.Test;
@@ -175,6 +176,18 @@ public class SpringBeanTest {
     UserController userController = ioc.getBean("userController",UserController.class);
     userController.sayOk();
     System.out.println("userController=" + userController);
+  }
+
+
+  @Test
+  public void setProByDependcyInjction() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans02.xml");
+
+    PhoneService phoneService = ioc.getBean("phoneService",PhoneService.class);
+
+    phoneService.save();
+
+    System.out.println("ok" + ioc);
   }
 
 
