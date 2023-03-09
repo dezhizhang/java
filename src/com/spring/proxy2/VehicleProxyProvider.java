@@ -21,6 +21,9 @@ public class VehicleProxyProvider {
     InvocationHandler invocation = new InvocationHandler(){
       @Override
       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+        System.out.println("交通工具开始运行...");
+        method.invoke(targetVehicle,args);
+        System.out.println("交通工具停止运行...");
         return null;
       }
     };
