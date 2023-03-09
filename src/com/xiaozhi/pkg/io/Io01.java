@@ -21,7 +21,7 @@ public class Io01 {
       throw new RuntimeException(e);
     }
   }
-//  @Test
+//  @TestVehicle
   public void created1() {
     File file = new File("./text1");
     String fileName = "news.txt";
