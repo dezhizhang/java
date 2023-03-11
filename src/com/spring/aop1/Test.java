@@ -9,11 +9,7 @@ public class Test {
      ApplicationContext ioc = new ClassPathXmlApplicationContext("beans04.xml");
     Animal animal = ioc.getBean(Animal.class);
 
-    Object result = animal.getSum(10,2);
-    Object result1 = animal.getSub(10,2);
-
-    System.out.println(result1);
-    System.out.println(result);
+    animal.getSum(10,2);
 //    System.out.println(animal.getClass());
 
   }

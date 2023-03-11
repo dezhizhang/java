@@ -17,10 +17,10 @@ public class AnimalAspect {
   }
 
   // 返回通知
-  @AfterReturning(value = "execution(public float com.spring.aop1.Dog.*(..))")
-  public void showSuccessEndLog(JoinPoint joinPoint) {
+  @AfterReturning(value = "execution(public float com.spring.aop1.Dog.*(..))",returning = "result")
+  public void showSuccessEndLog(JoinPoint joinPoint,Object result) {
     Signature signature = joinPoint.getSignature();
-    System.out.println("返回结果" + signature.getDeclaringTypeName());
+    System.out.println("返回结果" + result);
   }
 
   @AfterThrowing(value = "execution(public float com.spring.aop1.Dog.*(..))")

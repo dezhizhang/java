@@ -18,4 +18,14 @@ public class ApoTest {
     camera.work();
 
   }
+  @Test
+
+  public void test03() {
+    ApplicationContext ioc = new ClassPathXmlApplicationContext("beans05.xml");
+
+    Car car = ioc.getBean(Car.class);
+
+    car.run();
+
+  }
 }
