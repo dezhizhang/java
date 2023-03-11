@@ -13,7 +13,6 @@ public class Dog implements Animal {
   @Override
   public float getSum(float i, float j) {
     float result = i + j;
-    float smart = 1 / 0;
     return result;
   }
 }
