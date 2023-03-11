@@ -9,9 +9,11 @@ public class ApoTest {
 
   @Test
   public void testAop() {
+
     ApplicationContext ioc = new ClassPathXmlApplicationContext("beans05.xml");
     Usb phone = (Usb) ioc.getBean("phone");
     Usb camera = (Usb) ioc.getBean("camera");
+
     phone.work();
     camera.work();
 
