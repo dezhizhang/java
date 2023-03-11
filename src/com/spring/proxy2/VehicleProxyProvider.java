@@ -28,8 +28,8 @@ public class VehicleProxyProvider {
       }
     };
 
-    Proxy.newProxyInstance(loader, interfaces, invocation);
-    return null;
+    Vehicle proxy =(Vehicle) Proxy.newProxyInstance(loader, interfaces, invocation);
+    return proxy;
   }
 
 }
