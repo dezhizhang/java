@@ -22,13 +22,13 @@ public class VehicleProxyProvider {
       @Override
       public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("交通工具开始运行...");
-        method.invoke(targetVehicle,args);
+        Object invoke = method.invoke(targetVehicle, args);
         System.out.println("交通工具停止运行...");
-        return null;
+        return invoke;
       }
     };
 
-    Proxy.newProxyInstance(loader,interfaces,invocation);
+    Proxy.newProxyInstance(loader, interfaces, invocation);
     return null;
   }
 
