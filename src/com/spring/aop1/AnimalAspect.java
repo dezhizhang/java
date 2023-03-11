@@ -23,10 +23,10 @@ public class AnimalAspect {
     System.out.println("返回结果" + result);
   }
 
-  @AfterThrowing(value = "execution(public float com.spring.aop1.Dog.*(..))")
-  public void showExceptLog(JoinPoint joinPoint) {
+  @AfterThrowing(value = "execution(public float com.spring.aop1.Dog.*(..))",throwing = "throwing")
+  public void showExceptLog(JoinPoint joinPoint,Throwable throwing) {
     Signature signature = joinPoint.getSignature();
-    System.out.println("方法出现异常" + signature.getDeclaringType());
+    System.out.println("方法出现异常" + throwing);
   }
 
   // 最终通知
@@ -35,4 +35,5 @@ public class AnimalAspect {
     Signature signature = joinPoint.getSignature();
     System.out.println("最终通知");
   }
+
 }
