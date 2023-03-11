@@ -11,4 +11,20 @@ public class Test {
     System.out.println("===========");
 
   }
+
+  @org.junit.jupiter.api.Test
+  public void proxyDogTest() {
+    Animal dog = new Dog();
+
+    MyProxyProvider myProxyProvider = new MyProxyProvider(dog);
+
+    Animal proxy = myProxyProvider.getProxy();
+
+    proxy.getSum(10,2);
+    proxy.getSub(10,2);
+
+
+
+
+  }
 }
